@@ -18,6 +18,10 @@
 		A9BA1BF420F4346D00F6E329 /* DashboardCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9BA1BF220F4346D00F6E329 /* DashboardCollectionViewController.xib */; };
 		A9BA1BFC20F443FA00F6E329 /* DashboardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BA1BFA20F443FA00F6E329 /* DashboardCollectionViewCell.swift */; };
 		A9BA1BFD20F443FA00F6E329 /* DashboardCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9BA1BFB20F443FA00F6E329 /* DashboardCollectionViewCell.xib */; };
+		A9C0953F20F5731E00929A72 /* SocketCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C0953D20F5731E00929A72 /* SocketCollectionViewCell.swift */; };
+		A9C0954020F5731E00929A72 /* SocketCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9C0953E20F5731E00929A72 /* SocketCollectionViewCell.xib */; };
+		A9C0954720F574A400929A72 /* SocketCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C0954520F574A400929A72 /* SocketCollectionViewController.swift */; };
+		A9C0954820F574A400929A72 /* SocketCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9C0954620F574A400929A72 /* SocketCollectionViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +59,10 @@
 		A9BA1BF220F4346D00F6E329 /* DashboardCollectionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DashboardCollectionViewController.xib; sourceTree = "<group>"; };
 		A9BA1BFA20F443FA00F6E329 /* DashboardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardCollectionViewCell.swift; sourceTree = "<group>"; };
 		A9BA1BFB20F443FA00F6E329 /* DashboardCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DashboardCollectionViewCell.xib; sourceTree = "<group>"; };
+		A9C0953D20F5731E00929A72 /* SocketCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketCollectionViewCell.swift; sourceTree = "<group>"; };
+		A9C0953E20F5731E00929A72 /* SocketCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SocketCollectionViewCell.xib; sourceTree = "<group>"; };
+		A9C0954520F574A400929A72 /* SocketCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketCollectionViewController.swift; sourceTree = "<group>"; };
+		A9C0954620F574A400929A72 /* SocketCollectionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SocketCollectionViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +122,8 @@
 				A9BA1BC720F42FC800F6E329 /* smartstrip.xcdatamodeld */,
 				A9BA1BF120F4346D00F6E329 /* DashboardCollectionViewController.swift */,
 				A9BA1BF220F4346D00F6E329 /* DashboardCollectionViewController.xib */,
+				A9C0954520F574A400929A72 /* SocketCollectionViewController.swift */,
+				A9C0954620F574A400929A72 /* SocketCollectionViewController.xib */,
 			);
 			path = smartstrip;
 			sourceTree = "<group>";
@@ -141,6 +151,8 @@
 			children = (
 				A9BA1BFA20F443FA00F6E329 /* DashboardCollectionViewCell.swift */,
 				A9BA1BFB20F443FA00F6E329 /* DashboardCollectionViewCell.xib */,
+				A9C0953D20F5731E00929A72 /* SocketCollectionViewCell.swift */,
+				A9C0953E20F5731E00929A72 /* SocketCollectionViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -252,6 +264,8 @@
 				A9BA1BCE20F42FC900F6E329 /* LaunchScreen.storyboard in Resources */,
 				A9BA1BF420F4346D00F6E329 /* DashboardCollectionViewController.xib in Resources */,
 				A9BA1BCB20F42FC900F6E329 /* Assets.xcassets in Resources */,
+				A9C0954820F574A400929A72 /* SocketCollectionViewController.xib in Resources */,
+				A9C0954020F5731E00929A72 /* SocketCollectionViewCell.xib in Resources */,
 				A9BA1BC620F42FC800F6E329 /* Main.storyboard in Resources */,
 				A9BA1BFD20F443FA00F6E329 /* DashboardCollectionViewCell.xib in Resources */,
 			);
@@ -282,6 +296,8 @@
 				A9BA1BF320F4346D00F6E329 /* DashboardCollectionViewController.swift in Sources */,
 				A9BA1BFC20F443FA00F6E329 /* DashboardCollectionViewCell.swift in Sources */,
 				A9BA1BC120F42FC800F6E329 /* AppDelegate.swift in Sources */,
+				A9C0953F20F5731E00929A72 /* SocketCollectionViewCell.swift in Sources */,
+				A9C0954720F574A400929A72 /* SocketCollectionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,18 +1,17 @@
 //
-//  DashboardCollectionViewCell.swift
+//  SocketCollectionViewCell.swift
 //  smartstrip
 //
-//  Created by Loud on 7/9/18.
+//  Created by Loud on 7/10/18.
 //  Copyright © 2018 Loudsoftware. All rights reserved.
 //
 
 import UIKit
 
-class DashboardCollectionViewCell: UICollectionViewCell {
+class SocketCollectionViewCell: UICollectionViewCell {
 
-	@IBOutlet weak var cellNameLabel: UILabel!
+	@IBOutlet weak var cellName: UILabel!
 	@IBOutlet weak var cellImage: UIImageView!
-	
 	override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

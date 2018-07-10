@@ -1,8 +1,8 @@
 //
-//  DashboardCollectionViewController.swift
+//  SocketCollectionViewController.swift
 //  smartstrip
 //
-//  Created by Loud on 7/9/18.
+//  Created by Loud on 7/10/18.
 //  Copyright © 2018 Loudsoftware. All rights reserved.
 //
 
@@ -10,30 +10,35 @@ import UIKit
 
 private let reuseIdentifier = "Cell"
 
-struct view_data {
+struct view_sockets {
 	var name : String?
 	var image : UIImage?
 }
 
-class DashboardCollectionViewController: UICollectionViewController {
+class SocketCollectionViewController: UICollectionViewController {
 	
-	var cv_items = [view_data]()
+	var cv_items = [view_sockets]()
 	
     override func viewDidLoad() {
         super.viewDidLoad()
 
-			self.title = "Dashboard";
+			self.title = "Socket Status"
 			
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
-			
-			//data source
-			cv_items.append(view_data(name: "Manual", image: nil))
-			cv_items.append(view_data(name: "Custom", image: nil))
 
-        // Register cell classes
-			self.collectionView!.register(UINib(nibName: "DashboardCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: reuseIdentifier)
+			//data source
+			cv_items.append(view_sockets(name: "One", image: nil))
+			cv_items.append(view_sockets(name: "Two", image: nil))
+			cv_items.append(view_sockets(name: "Three", image: nil))
+			cv_items.append(view_sockets(name: "Four", image: nil))
+			cv_items.append(view_sockets(name: "Five", image: nil))
+			cv_items.append(view_sockets(name: "Six", image: nil))
 			
+			// Register cell classes
+			self.collectionView!.register(UINib(nibName: "SocketCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: reuseIdentifier)
+
+        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -54,25 +59,23 @@ class DashboardCollectionViewController: UICollectionViewController {
     // MARK: UICollectionViewDataSource
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
         return cv_items.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-			let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! DashboardCollectionViewCell
-			
-			
-        // Configure the cell
-			cell.backgroundColor = UIColor.white;
-			cell.cellNameLabel.text =  cv_items[indexPath.row].name
+       	let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! SocketCollectionViewCell
+    
+			// Configure the cell
+			cell.backgroundColor = UIColor.green;
+			cell.cellName.text =  cv_items[indexPath.row].name
 			cell.cellImage.image = cv_items[indexPath.row].image
-			return cell
+    
+        return cell
     }
 
     // MARK: UICollectionViewDelegate
@@ -84,17 +87,12 @@ class DashboardCollectionViewController: UICollectionViewController {
     }
     */
 
-
+    /*
     // Uncomment this method to specify if the specified item should be selected
     override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-			
-			  let manualViewController = SocketCollectionViewController(nibName: "SocketCollectionViewController", bundle: nil)
-			
-			  navigationController?.pushViewController(manualViewController, animated: true)
-			
         return true
     }
-
+    */
 
     /*
     // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
