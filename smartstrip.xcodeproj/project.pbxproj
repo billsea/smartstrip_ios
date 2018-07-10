@@ -1,0 +1,606 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A9BA1BC120F42FC800F6E329 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BA1BC020F42FC800F6E329 /* AppDelegate.swift */; };
+		A9BA1BC320F42FC800F6E329 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BA1BC220F42FC800F6E329 /* ViewController.swift */; };
+		A9BA1BC620F42FC800F6E329 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A9BA1BC420F42FC800F6E329 /* Main.storyboard */; };
+		A9BA1BC920F42FC800F6E329 /* smartstrip.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A9BA1BC720F42FC800F6E329 /* smartstrip.xcdatamodeld */; };
+		A9BA1BCB20F42FC900F6E329 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A9BA1BCA20F42FC900F6E329 /* Assets.xcassets */; };
+		A9BA1BCE20F42FC900F6E329 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A9BA1BCC20F42FC900F6E329 /* LaunchScreen.storyboard */; };
+		A9BA1BD920F42FC900F6E329 /* smartstripTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BA1BD820F42FC900F6E329 /* smartstripTests.swift */; };
+		A9BA1BE420F42FC900F6E329 /* smartstripUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BA1BE320F42FC900F6E329 /* smartstripUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A9BA1BD520F42FC900F6E329 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A9BA1BB520F42FC800F6E329 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A9BA1BBC20F42FC800F6E329;
+			remoteInfo = smartstrip;
+		};
+		A9BA1BE020F42FC900F6E329 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A9BA1BB520F42FC800F6E329 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A9BA1BBC20F42FC800F6E329;
+			remoteInfo = smartstrip;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		A9BA1BBD20F42FC800F6E329 /* smartstrip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = smartstrip.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A9BA1BC020F42FC800F6E329 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A9BA1BC220F42FC800F6E329 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A9BA1BC520F42FC800F6E329 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		A9BA1BC820F42FC800F6E329 /* smartstrip.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = smartstrip.xcdatamodel; sourceTree = "<group>"; };
+		A9BA1BCA20F42FC900F6E329 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A9BA1BCD20F42FC900F6E329 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		A9BA1BCF20F42FC900F6E329 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A9BA1BD420F42FC900F6E329 /* smartstripTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = smartstripTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A9BA1BD820F42FC900F6E329 /* smartstripTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = smartstripTests.swift; sourceTree = "<group>"; };
+		A9BA1BDA20F42FC900F6E329 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A9BA1BDF20F42FC900F6E329 /* smartstripUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = smartstripUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A9BA1BE320F42FC900F6E329 /* smartstripUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = smartstripUITests.swift; sourceTree = "<group>"; };
+		A9BA1BE520F42FC900F6E329 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A9BA1BBA20F42FC800F6E329 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A9BA1BD120F42FC900F6E329 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A9BA1BDC20F42FC900F6E329 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A9BA1BB420F42FC800F6E329 = {
+			isa = PBXGroup;
+			children = (
+				A9BA1BBF20F42FC800F6E329 /* smartstrip */,
+				A9BA1BD720F42FC900F6E329 /* smartstripTests */,
+				A9BA1BE220F42FC900F6E329 /* smartstripUITests */,
+				A9BA1BBE20F42FC800F6E329 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A9BA1BBE20F42FC800F6E329 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A9BA1BBD20F42FC800F6E329 /* smartstrip.app */,
+				A9BA1BD420F42FC900F6E329 /* smartstripTests.xctest */,
+				A9BA1BDF20F42FC900F6E329 /* smartstripUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A9BA1BBF20F42FC800F6E329 /* smartstrip */ = {
+			isa = PBXGroup;
+			children = (
+				A9BA1BC020F42FC800F6E329 /* AppDelegate.swift */,
+				A9BA1BC220F42FC800F6E329 /* ViewController.swift */,
+				A9BA1BC420F42FC800F6E329 /* Main.storyboard */,
+				A9BA1BCA20F42FC900F6E329 /* Assets.xcassets */,
+				A9BA1BCC20F42FC900F6E329 /* LaunchScreen.storyboard */,
+				A9BA1BCF20F42FC900F6E329 /* Info.plist */,
+				A9BA1BC720F42FC800F6E329 /* smartstrip.xcdatamodeld */,
+			);
+			path = smartstrip;
+			sourceTree = "<group>";
+		};
+		A9BA1BD720F42FC900F6E329 /* smartstripTests */ = {
+			isa = PBXGroup;
+			children = (
+				A9BA1BD820F42FC900F6E329 /* smartstripTests.swift */,
+				A9BA1BDA20F42FC900F6E329 /* Info.plist */,
+			);
+			path = smartstripTests;
+			sourceTree = "<group>";
+		};
+		A9BA1BE220F42FC900F6E329 /* smartstripUITests */ = {
+			isa = PBXGroup;
+			children = (
+				A9BA1BE320F42FC900F6E329 /* smartstripUITests.swift */,
+				A9BA1BE520F42FC900F6E329 /* Info.plist */,
+			);
+			path = smartstripUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A9BA1BBC20F42FC800F6E329 /* smartstrip */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A9BA1BE820F42FC900F6E329 /* Build configuration list for PBXNativeTarget "smartstrip" */;
+			buildPhases = (
+				A9BA1BB920F42FC800F6E329 /* Sources */,
+				A9BA1BBA20F42FC800F6E329 /* Frameworks */,
+				A9BA1BBB20F42FC800F6E329 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = smartstrip;
+			productName = smartstrip;
+			productReference = A9BA1BBD20F42FC800F6E329 /* smartstrip.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A9BA1BD320F42FC900F6E329 /* smartstripTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A9BA1BEB20F42FC900F6E329 /* Build configuration list for PBXNativeTarget "smartstripTests" */;
+			buildPhases = (
+				A9BA1BD020F42FC900F6E329 /* Sources */,
+				A9BA1BD120F42FC900F6E329 /* Frameworks */,
+				A9BA1BD220F42FC900F6E329 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A9BA1BD620F42FC900F6E329 /* PBXTargetDependency */,
+			);
+			name = smartstripTests;
+			productName = smartstripTests;
+			productReference = A9BA1BD420F42FC900F6E329 /* smartstripTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		A9BA1BDE20F42FC900F6E329 /* smartstripUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A9BA1BEE20F42FC900F6E329 /* Build configuration list for PBXNativeTarget "smartstripUITests" */;
+			buildPhases = (
+				A9BA1BDB20F42FC900F6E329 /* Sources */,
+				A9BA1BDC20F42FC900F6E329 /* Frameworks */,
+				A9BA1BDD20F42FC900F6E329 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A9BA1BE120F42FC900F6E329 /* PBXTargetDependency */,
+			);
+			name = smartstripUITests;
+			productName = smartstripUITests;
+			productReference = A9BA1BDF20F42FC900F6E329 /* smartstripUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A9BA1BB520F42FC800F6E329 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0940;
+				LastUpgradeCheck = 0940;
+				ORGANIZATIONNAME = Loudsoftware;
+				TargetAttributes = {
+					A9BA1BBC20F42FC800F6E329 = {
+						CreatedOnToolsVersion = 9.4.1;
+					};
+					A9BA1BD320F42FC900F6E329 = {
+						CreatedOnToolsVersion = 9.4.1;
+						TestTargetID = A9BA1BBC20F42FC800F6E329;
+					};
+					A9BA1BDE20F42FC900F6E329 = {
+						CreatedOnToolsVersion = 9.4.1;
+						TestTargetID = A9BA1BBC20F42FC800F6E329;
+					};
+				};
+			};
+			buildConfigurationList = A9BA1BB820F42FC800F6E329 /* Build configuration list for PBXProject "smartstrip" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A9BA1BB420F42FC800F6E329;
+			productRefGroup = A9BA1BBE20F42FC800F6E329 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A9BA1BBC20F42FC800F6E329 /* smartstrip */,
+				A9BA1BD320F42FC900F6E329 /* smartstripTests */,
+				A9BA1BDE20F42FC900F6E329 /* smartstripUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A9BA1BBB20F42FC800F6E329 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A9BA1BCE20F42FC900F6E329 /* LaunchScreen.storyboard in Resources */,
+				A9BA1BCB20F42FC900F6E329 /* Assets.xcassets in Resources */,
+				A9BA1BC620F42FC800F6E329 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A9BA1BD220F42FC900F6E329 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A9BA1BDD20F42FC900F6E329 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A9BA1BB920F42FC800F6E329 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A9BA1BC920F42FC800F6E329 /* smartstrip.xcdatamodeld in Sources */,
+				A9BA1BC320F42FC800F6E329 /* ViewController.swift in Sources */,
+				A9BA1BC120F42FC800F6E329 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A9BA1BD020F42FC900F6E329 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A9BA1BD920F42FC900F6E329 /* smartstripTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A9BA1BDB20F42FC900F6E329 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A9BA1BE420F42FC900F6E329 /* smartstripUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A9BA1BD620F42FC900F6E329 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A9BA1BBC20F42FC800F6E329 /* smartstrip */;
+			targetProxy = A9BA1BD520F42FC900F6E329 /* PBXContainerItemProxy */;
+		};
+		A9BA1BE120F42FC900F6E329 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A9BA1BBC20F42FC800F6E329 /* smartstrip */;
+			targetProxy = A9BA1BE020F42FC900F6E329 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		A9BA1BC420F42FC800F6E329 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A9BA1BC520F42FC800F6E329 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		A9BA1BCC20F42FC900F6E329 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A9BA1BCD20F42FC900F6E329 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A9BA1BE620F42FC900F6E329 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		A9BA1BE720F42FC900F6E329 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A9BA1BE920F42FC900F6E329 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ZZGJ2UYWJY;
+				INFOPLIST_FILE = smartstrip/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.loudsoftware.smartstrip;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A9BA1BEA20F42FC900F6E329 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ZZGJ2UYWJY;
+				INFOPLIST_FILE = smartstrip/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.loudsoftware.smartstrip;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		A9BA1BEC20F42FC900F6E329 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ZZGJ2UYWJY;
+				INFOPLIST_FILE = smartstripTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.loudsoftware.smartstripTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/smartstrip.app/smartstrip";
+			};
+			name = Debug;
+		};
+		A9BA1BED20F42FC900F6E329 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ZZGJ2UYWJY;
+				INFOPLIST_FILE = smartstripTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.loudsoftware.smartstripTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/smartstrip.app/smartstrip";
+			};
+			name = Release;
+		};
+		A9BA1BEF20F42FC900F6E329 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ZZGJ2UYWJY;
+				INFOPLIST_FILE = smartstripUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.loudsoftware.smartstripUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = smartstrip;
+			};
+			name = Debug;
+		};
+		A9BA1BF020F42FC900F6E329 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ZZGJ2UYWJY;
+				INFOPLIST_FILE = smartstripUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.loudsoftware.smartstripUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = smartstrip;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A9BA1BB820F42FC800F6E329 /* Build configuration list for PBXProject "smartstrip" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A9BA1BE620F42FC900F6E329 /* Debug */,
+				A9BA1BE720F42FC900F6E329 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A9BA1BE820F42FC900F6E329 /* Build configuration list for PBXNativeTarget "smartstrip" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A9BA1BE920F42FC900F6E329 /* Debug */,
+				A9BA1BEA20F42FC900F6E329 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A9BA1BEB20F42FC900F6E329 /* Build configuration list for PBXNativeTarget "smartstripTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A9BA1BEC20F42FC900F6E329 /* Debug */,
+				A9BA1BED20F42FC900F6E329 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A9BA1BEE20F42FC900F6E329 /* Build configuration list for PBXNativeTarget "smartstripUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A9BA1BEF20F42FC900F6E329 /* Debug */,
+				A9BA1BF020F42FC900F6E329 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		A9BA1BC720F42FC800F6E329 /* smartstrip.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				A9BA1BC820F42FC800F6E329 /* smartstrip.xcdatamodel */,
+			);
+			currentVersion = A9BA1BC820F42FC800F6E329 /* smartstrip.xcdatamodel */;
+			path = smartstrip.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = A9BA1BB520F42FC800F6E329 /* Project object */;
+}
