@@ -10,35 +10,32 @@ import UIKit
 
 private let reuseIdentifier = "Cell"
 
-struct view_sockets {
+struct view_socket {
 	var name : String?
 	var image : UIImage?
+	var selected : Bool?
 }
 
 class SocketCollectionViewController: UICollectionViewController {
 	
-	var cv_items = [view_sockets]()
+	var cv_items = [view_socket]()
 	
     override func viewDidLoad() {
         super.viewDidLoad()
 
 			self.title = "Socket Status"
 			
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
 			//data source
-			cv_items.append(view_sockets(name: "One", image: nil))
-			cv_items.append(view_sockets(name: "Two", image: nil))
-			cv_items.append(view_sockets(name: "Three", image: nil))
-			cv_items.append(view_sockets(name: "Four", image: nil))
-			cv_items.append(view_sockets(name: "Five", image: nil))
-			cv_items.append(view_sockets(name: "Six", image: nil))
+			cv_items.append(view_socket(name: "One", image: nil, selected: true))
+			cv_items.append(view_socket(name: "Two", image: nil, selected: true))
+			cv_items.append(view_socket(name: "Three", image: nil, selected: false))
+			cv_items.append(view_socket(name: "Four", image: nil, selected: true))
+			cv_items.append(view_socket(name: "Five", image: nil, selected: true))
+			cv_items.append(view_socket(name: "Six", image: nil, selected: true))
 			
 			// Register cell classes
 			self.collectionView!.register(UINib(nibName: "SocketCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: reuseIdentifier)
 
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -46,18 +43,7 @@ class SocketCollectionViewController: UICollectionViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
-
     // MARK: UICollectionViewDataSource
-
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -71,9 +57,10 @@ class SocketCollectionViewController: UICollectionViewController {
        	let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! SocketCollectionViewCell
     
 			// Configure the cell
-			cell.backgroundColor = UIColor.green;
-			cell.cellName.text =  cv_items[indexPath.row].name
-			cell.cellImage.image = cv_items[indexPath.row].image
+			let current_socket = cv_items[indexPath.row] as view_socket
+			cell.backgroundColor = current_socket.selected! ? UIColor.green : UIColor.red
+			cell.cellName.text =  current_socket.name
+			cell.cellImage.image = current_socket.image
     
         return cell
     }

@@ -23,10 +23,7 @@ class DashboardCollectionViewController: UICollectionViewController {
         super.viewDidLoad()
 
 			self.title = "Dashboard";
-			
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-			
+
 			//data source
 			cv_items.append(view_data(name: "Manual", image: nil))
 			cv_items.append(view_data(name: "Custom", image: nil))
@@ -41,18 +38,7 @@ class DashboardCollectionViewController: UICollectionViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
-
     // MARK: UICollectionViewDataSource
-
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
