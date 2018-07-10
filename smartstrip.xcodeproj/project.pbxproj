@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		A9BA1BC120F42FC800F6E329 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BA1BC020F42FC800F6E329 /* AppDelegate.swift */; };
-		A9BA1BC320F42FC800F6E329 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BA1BC220F42FC800F6E329 /* ViewController.swift */; };
 		A9BA1BC620F42FC800F6E329 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A9BA1BC420F42FC800F6E329 /* Main.storyboard */; };
 		A9BA1BC920F42FC800F6E329 /* smartstrip.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A9BA1BC720F42FC800F6E329 /* smartstrip.xcdatamodeld */; };
 		A9BA1BCB20F42FC900F6E329 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A9BA1BCA20F42FC900F6E329 /* Assets.xcassets */; };
@@ -41,7 +40,6 @@
 /* Begin PBXFileReference section */
 		A9BA1BBD20F42FC800F6E329 /* smartstrip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = smartstrip.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9BA1BC020F42FC800F6E329 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A9BA1BC220F42FC800F6E329 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		A9BA1BC520F42FC800F6E329 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A9BA1BC820F42FC800F6E329 /* smartstrip.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = smartstrip.xcdatamodel; sourceTree = "<group>"; };
 		A9BA1BCA20F42FC900F6E329 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -109,7 +107,6 @@
 			children = (
 				A9BA1BF920F443CB00F6E329 /* Cells */,
 				A9BA1BC020F42FC800F6E329 /* AppDelegate.swift */,
-				A9BA1BC220F42FC800F6E329 /* ViewController.swift */,
 				A9BA1BC420F42FC800F6E329 /* Main.storyboard */,
 				A9BA1BCA20F42FC900F6E329 /* Assets.xcassets */,
 				A9BA1BCC20F42FC900F6E329 /* LaunchScreen.storyboard */,
@@ -283,7 +280,6 @@
 			files = (
 				A9BA1BC920F42FC800F6E329 /* smartstrip.xcdatamodeld in Sources */,
 				A9BA1BF320F4346D00F6E329 /* DashboardCollectionViewController.swift in Sources */,
-				A9BA1BC320F42FC800F6E329 /* ViewController.swift in Sources */,
 				A9BA1BFC20F443FA00F6E329 /* DashboardCollectionViewCell.swift in Sources */,
 				A9BA1BC120F42FC800F6E329 /* AppDelegate.swift in Sources */,
 			);
