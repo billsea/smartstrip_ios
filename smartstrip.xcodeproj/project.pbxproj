@@ -15,6 +15,10 @@
 		A9BA1BCE20F42FC900F6E329 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A9BA1BCC20F42FC900F6E329 /* LaunchScreen.storyboard */; };
 		A9BA1BD920F42FC900F6E329 /* smartstripTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BA1BD820F42FC900F6E329 /* smartstripTests.swift */; };
 		A9BA1BE420F42FC900F6E329 /* smartstripUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BA1BE320F42FC900F6E329 /* smartstripUITests.swift */; };
+		A9BA1BF320F4346D00F6E329 /* DashboardCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BA1BF120F4346D00F6E329 /* DashboardCollectionViewController.swift */; };
+		A9BA1BF420F4346D00F6E329 /* DashboardCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9BA1BF220F4346D00F6E329 /* DashboardCollectionViewController.xib */; };
+		A9BA1BFC20F443FA00F6E329 /* DashboardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BA1BFA20F443FA00F6E329 /* DashboardCollectionViewCell.swift */; };
+		A9BA1BFD20F443FA00F6E329 /* DashboardCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9BA1BFB20F443FA00F6E329 /* DashboardCollectionViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +53,10 @@
 		A9BA1BDF20F42FC900F6E329 /* smartstripUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = smartstripUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9BA1BE320F42FC900F6E329 /* smartstripUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = smartstripUITests.swift; sourceTree = "<group>"; };
 		A9BA1BE520F42FC900F6E329 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A9BA1BF120F4346D00F6E329 /* DashboardCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardCollectionViewController.swift; sourceTree = "<group>"; };
+		A9BA1BF220F4346D00F6E329 /* DashboardCollectionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DashboardCollectionViewController.xib; sourceTree = "<group>"; };
+		A9BA1BFA20F443FA00F6E329 /* DashboardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardCollectionViewCell.swift; sourceTree = "<group>"; };
+		A9BA1BFB20F443FA00F6E329 /* DashboardCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DashboardCollectionViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +107,7 @@
 		A9BA1BBF20F42FC800F6E329 /* smartstrip */ = {
 			isa = PBXGroup;
 			children = (
+				A9BA1BF920F443CB00F6E329 /* Cells */,
 				A9BA1BC020F42FC800F6E329 /* AppDelegate.swift */,
 				A9BA1BC220F42FC800F6E329 /* ViewController.swift */,
 				A9BA1BC420F42FC800F6E329 /* Main.storyboard */,
@@ -106,6 +115,8 @@
 				A9BA1BCC20F42FC900F6E329 /* LaunchScreen.storyboard */,
 				A9BA1BCF20F42FC900F6E329 /* Info.plist */,
 				A9BA1BC720F42FC800F6E329 /* smartstrip.xcdatamodeld */,
+				A9BA1BF120F4346D00F6E329 /* DashboardCollectionViewController.swift */,
+				A9BA1BF220F4346D00F6E329 /* DashboardCollectionViewController.xib */,
 			);
 			path = smartstrip;
 			sourceTree = "<group>";
@@ -126,6 +137,15 @@
 				A9BA1BE520F42FC900F6E329 /* Info.plist */,
 			);
 			path = smartstripUITests;
+			sourceTree = "<group>";
+		};
+		A9BA1BF920F443CB00F6E329 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				A9BA1BFA20F443FA00F6E329 /* DashboardCollectionViewCell.swift */,
+				A9BA1BFB20F443FA00F6E329 /* DashboardCollectionViewCell.xib */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -233,8 +253,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				A9BA1BCE20F42FC900F6E329 /* LaunchScreen.storyboard in Resources */,
+				A9BA1BF420F4346D00F6E329 /* DashboardCollectionViewController.xib in Resources */,
 				A9BA1BCB20F42FC900F6E329 /* Assets.xcassets in Resources */,
 				A9BA1BC620F42FC800F6E329 /* Main.storyboard in Resources */,
+				A9BA1BFD20F443FA00F6E329 /* DashboardCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,7 +282,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				A9BA1BC920F42FC800F6E329 /* smartstrip.xcdatamodeld in Sources */,
+				A9BA1BF320F4346D00F6E329 /* DashboardCollectionViewController.swift in Sources */,
 				A9BA1BC320F42FC800F6E329 /* ViewController.swift in Sources */,
+				A9BA1BFC20F443FA00F6E329 /* DashboardCollectionViewCell.swift in Sources */,
 				A9BA1BC120F42FC800F6E329 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
