@@ -27,6 +27,7 @@ class DashboardCollectionViewController: UICollectionViewController {
 			//data source
 			cv_items.append(view_data(name: "Manual", image: nil))
 			cv_items.append(view_data(name: "Custom", image: nil))
+			cv_items.append(view_data(name: "Settings", image: nil))
 
         // Register cell classes
 			self.collectionView!.register(UINib(nibName: "DashboardCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: reuseIdentifier)

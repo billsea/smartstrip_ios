@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreBluetooth
 
 private let reuseIdentifier = "Cell"
 
@@ -16,7 +17,11 @@ struct view_socket {
 	var selected : Bool?
 }
 
-class SocketCollectionViewController: UICollectionViewController {
+class SocketCollectionViewController: UICollectionViewController, CBCentralManagerDelegate, CBPeripheralDelegate   {
+	
+	var HmSoftPeripheral: CBPeripheral? //HmSoft BLE Shield
+	var centralManager: CBCentralManager!
+	var smartStripPeripheral: CBPeripheral!
 	
 	var cv_items = [view_socket]()
 	
@@ -24,6 +29,8 @@ class SocketCollectionViewController: UICollectionViewController {
         super.viewDidLoad()
 
 			self.title = "Socket Status"
+			
+			centralManager = CBCentralManager(delegate: self, queue: nil)
 			
 			//data source
 			cv_items.append(view_socket(name: "One", image: nil, selected: true))
@@ -37,7 +44,12 @@ class SocketCollectionViewController: UICollectionViewController {
 			self.collectionView!.register(UINib(nibName: "SocketCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: reuseIdentifier)
 
     }
-
+	
+		override func viewDidAppear(_ animated: Bool) {
+			self.scanBLEDevices()
+		}
+	
+	
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -74,26 +86,74 @@ class SocketCollectionViewController: UICollectionViewController {
     }
     */
 
-    /*
+
     // Uncomment this method to specify if the specified item should be selected
     override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+			
+			centralManager?.connect(HmSoftPeripheral!, options: nil)
+			
         return true
     }
-    */
 
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-        return false
-    }
 
-    override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-        return false
-    }
+	
+	//MARK: BLE Calls
+	
+		// MARK: BLE Scanning
+		func scanBLEDevices() {
+			//manager?.scanForPeripherals(withServices: [CBUUID.init(string: parentView!.BLEService)], options: nil)
+			
+			//if you pass nil in the first parameter, then scanForPeriperals will look for any devices.
+			centralManager?.scanForPeripherals(withServices: nil, options: nil)
+			
+			//stop scanning after 3 seconds
+			DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+				self.stopScanForBLEDevices()
+			}
+		}
+	
+		func centralManagerDidUpdateState(_ central: CBCentralManager) {
+			print(central.state)
+		}
+	
+		func stopScanForBLEDevices() {
+			centralManager?.stopScan()
+		}
+	
+		// MARK: - CBCentralManagerDelegate Methods
+		func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
+			if(peripheral.name == "HMSoft"){
+				peripheral.delegate = self;
+				HmSoftPeripheral = peripheral;
+			}
+			print(peripheral)
+		}
+	
 
-    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
-    
-    }
-    */
+		// MARK: BLE Connect delegates
+		func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
+			peripheral.discoverServices(nil)//all services discovered..may be slow
+			print("Connected to " +  peripheral.name!)
+		}
+	
+		func centralManager(_ central: CBCentralManager, didFailToConnect peripheral: CBPeripheral, error: Error?) {
+			print(error!)
+		}
+	
+	
+		// MARK: BLE Peripheral delegates
+		func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
+			guard let services = peripheral.services else { return }
+			for service in services {
+				print(service)
+				peripheral.discoverCharacteristics(nil, for: service)
+			}
+		}
+	
+		func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
+			 print(service)
+		}
+
     
 }
+
