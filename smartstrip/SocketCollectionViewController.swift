@@ -145,9 +145,6 @@ class SocketCollectionViewController: UICollectionViewController, CBCentralManag
 		socket_index[0] = value
 
     HmSoftPeripheral?.writeValue(socket_index, for: self.positionCharacteristic!, type: CBCharacteristicWriteType.withoutResponse)
-		
-		//Send value to BLE Shield
-//		HmSoftPeripheral?.writeValue(position_string_data!, for: self.positionCharacteristic!, type: CBCharacteristicWriteType.withoutResponse)
 	}
 
 	func updateCollectionData(socket_index : Int, status: Int){
