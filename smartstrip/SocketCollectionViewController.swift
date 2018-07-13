@@ -12,6 +12,14 @@ import CoreBluetooth
 private let reuseIdentifier = "Cell"
 private let bleShieldName = "HMSoft"
 
+enum HW_SOCKET : UInt8 {
+	case ONE
+	case TWO
+	case THREE
+	case FOUR
+	case ALL
+}
+
 class view_socket {
 	var name : String?
 	var image : UIImage?
@@ -118,21 +126,28 @@ class SocketCollectionViewController: UICollectionViewController, CBCentralManag
 
 	// Uncomment this method to specify if the specified item should be selected
 	override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-		var sel_index = indexPath.row
+		var sel_index = UInt8(indexPath.row)
 		
 		if(sel_index < 6){
 			if(indexPath.row == 3){
-				sel_index = 2
+				sel_index = HW_SOCKET.THREE.rawValue
 			} else if(indexPath.row >= 4){
-				sel_index = 3
+				sel_index = HW_SOCKET.FOUR.rawValue
 			}
-			let position_string = String(sel_index)
-			let position_string_data = position_string.data(using: String.Encoding.utf8)
-			
-			//Send value to BLE Shield
-			HmSoftPeripheral?.writeValue(position_string_data!, for: self.positionCharacteristic!, type: CBCharacteristicWriteType.withoutResponse)
+			self.writeToBLE(value: sel_index)
 		}
 		return true
+	}
+	
+	//MARK: Write to ble
+	func writeToBLE(value: UInt8){
+		var socket_index = Data(count: 1)
+		socket_index[0] = value
+
+    HmSoftPeripheral?.writeValue(socket_index, for: self.positionCharacteristic!, type: CBCharacteristicWriteType.withoutResponse)
+		
+		//Send value to BLE Shield
+//		HmSoftPeripheral?.writeValue(position_string_data!, for: self.positionCharacteristic!, type: CBCharacteristicWriteType.withoutResponse)
 	}
 
 	func updateCollectionData(socket_index : Int, status: Int){
@@ -229,8 +244,9 @@ class SocketCollectionViewController: UICollectionViewController, CBCentralManag
 					//we'll save the reference, we need it to write data
 					positionCharacteristic = characteristic
 					peripheral.discoverDescriptors(for: characteristic)
+
 					
-					//peripheral.readValue(for: characteristic)
+					self.writeToBLE(value: HW_SOCKET.ALL.rawValue)//get socket status
 					
 					//Set Notify is useful to read incoming data async
 					peripheral.setNotifyValue(true, for: characteristic)
@@ -247,9 +263,12 @@ class SocketCollectionViewController: UICollectionViewController, CBCentralManag
 			//data recieved
 			if(characteristic.value != nil) {
 				//let stringValue = String(data: characteristic.value!, encoding: String.Encoding.utf8)!
+				if(Int(characteristic.value![0]) == HW_SOCKET.ALL.rawValue){
+					//arduino pin status
+					let stat = Int(characteristic.value![0])
+				} else {
 				self.updateCollectionData(socket_index: Int(characteristic.value![0]), status: Int(characteristic.value![1]))
-				//print(characteristic.value![0])
-				//print(characteristic.value![1])
+				}
 			}
 		}
 	}
