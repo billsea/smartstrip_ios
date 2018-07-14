@@ -154,8 +154,8 @@ class SocketCollectionViewController: UICollectionViewController, CBCentralManag
 				socket_change.append(socket_index)
 			}
 
-			for var item in socket_change {
-				var sel_socket = cv_items[item] as view_socket
+			for item in socket_change {
+				let sel_socket = cv_items[item] as view_socket
 				sel_socket.active = status == 0 ? false : true
 			}
 			
