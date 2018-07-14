@@ -19,7 +19,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="160" height="160"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="help" translatesAutoresizingMaskIntoConstraints="NO" id="O8r-HO-K8s">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="socket" translatesAutoresizingMaskIntoConstraints="NO" id="O8r-HO-K8s">
                         <rect key="frame" x="20" y="7" width="120" height="120"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </imageView>
@@ -43,6 +43,6 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="help" width="70" height="70"/>
+        <image name="socket" width="50" height="50"/>
     </resources>
 </document>

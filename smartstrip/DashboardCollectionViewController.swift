@@ -77,7 +77,7 @@ class DashboardCollectionViewController: UICollectionViewController {
 			
 			  let manualViewController = SocketCollectionViewController(nibName: "SocketCollectionViewController", bundle: nil)
 			
-			  navigationController?.pushViewController(manualViewController, animated: true)
+			  navigationController?.pushViewController(manualViewController, animated: false)
 			
         return true
     }
