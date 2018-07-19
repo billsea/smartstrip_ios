@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreBluetooth
+import CoreData
 
 private let reuseIdentifier = "Cell"
 private let bleShieldName = "HMSoft"
@@ -40,6 +41,10 @@ class SocketCollectionViewController: UICollectionViewController, CBCentralManag
 	var positionCharacteristic: CBCharacteristic?
 	var alertController : UIAlertController!
 	
+	var isManual : Bool?
+	
+	var presets = [NSManagedObject]()
+	
 	//TEMP
 	let BLEService = "FFE0"
 	let BLECharacteristic = "FFE1"
@@ -56,14 +61,9 @@ class SocketCollectionViewController: UICollectionViewController, CBCentralManag
 			
 			centralManager = CBCentralManager(delegate: self, queue: nil)
 			
-			//data source
-			cv_items.append(view_socket(name: "One", active: true))
-			cv_items.append(view_socket(name: "Two",  active: true))
-			cv_items.append(view_socket(name: "Three", active: true))
-			cv_items.append(view_socket(name: "Four", active: true))
-			cv_items.append(view_socket(name: "Five", active: true))
-			cv_items.append(view_socket(name: "Six", active: true))
-			
+			//set data source
+			isManual! ? self.loadManual() : self.loadPresets()
+
 			// Register cell classes
 			self.collectionView!.register(UINib(nibName: "SocketCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: reuseIdentifier)
 
@@ -71,6 +71,32 @@ class SocketCollectionViewController: UICollectionViewController, CBCentralManag
 	
 		override func viewWillAppear(_ animated: Bool) {
 			self.showProgressAlert()
+		}
+			
+		func loadManual(){
+			cv_items.append(view_socket(name: "One", active: true))
+			cv_items.append(view_socket(name: "Two",  active: true))
+			cv_items.append(view_socket(name: "Three", active: true))
+			cv_items.append(view_socket(name: "Four", active: true))
+			cv_items.append(view_socket(name: "Five", active: true))
+			cv_items.append(view_socket(name: "Six", active: true))
+		}
+	
+		func loadPresets() {
+			let app = AppDelegate()
+			let context = app.persistentContainer.viewContext
+			let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Preset")
+			
+			do {
+				presets = try context.fetch(fetchRequest)
+				//Example .... temp
+				let presetOne = presets[0] as! Socket
+				let pname = presetOne.name
+				let pnameAlt = presetOne.value(forKeyPath: "name") as? String
+				
+			} catch let error as NSError {
+				print("Could not fetch. \(error), \(error.userInfo)")
+			}
 		}
 	
 		func showProgressAlert() {
