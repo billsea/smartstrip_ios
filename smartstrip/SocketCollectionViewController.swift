@@ -62,6 +62,7 @@ class SocketCollectionViewController: UICollectionViewController, CBCentralManag
 			centralManager = CBCentralManager(delegate: self, queue: nil)
 			
 			//set data source
+			//self.save(name: "Test")//TEMP
 			isManual! ? self.loadManual() : self.loadPresets()
 
 			// Register cell classes
@@ -90,12 +91,31 @@ class SocketCollectionViewController: UICollectionViewController, CBCentralManag
 			do {
 				presets = try context.fetch(fetchRequest)
 				//Example .... temp
-				let presetOne = presets[0] as! Socket
+				let presetOne = presets[0] as! Preset
 				let pname = presetOne.name
 				let pnameAlt = presetOne.value(forKeyPath: "name") as? String
 				
 			} catch let error as NSError {
 				print("Could not fetch. \(error), \(error.userInfo)")
+			}
+		}
+	
+		func save(name: String) {
+			guard let appDelegate =
+				UIApplication.shared.delegate as? AppDelegate else {
+					return
+			}
+			
+			let managedContext = appDelegate.persistentContainer.viewContext
+			let entity = NSEntityDescription.entity(forEntityName: "Preset", in: managedContext)!
+			let preset = NSManagedObject(entity: entity,  insertInto: managedContext)
+			preset.setValue(name, forKeyPath: "name")
+			
+			do {
+				try managedContext.save()
+				presets.append(preset)
+			} catch let error as NSError {
+				print("Could not save. \(error), \(error.userInfo)")
 			}
 		}
 	
