@@ -16,6 +16,12 @@ class PresetsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+			self.title = "Preset"
+			
+			let editButton = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(editTapped))
+			
+			navigationItem.rightBarButtonItems = [editButton]
+			
 			//set data source
 			//self.save(name: "Test")//TEMP
 			self.loadPresets()
@@ -64,6 +70,10 @@ class PresetsViewController: UIViewController {
     }
     
 
+		@objc func editTapped(sender: AnyObject) {
+			let snd = sender as! UIBarButtonItem
+			
+		}
     /*
     // MARK: - Navigation
 
