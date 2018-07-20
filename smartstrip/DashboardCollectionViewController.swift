@@ -26,7 +26,7 @@ class DashboardCollectionViewController: UICollectionViewController {
 
 			//data source
 			cv_items.append(view_data(name: "Manual", image: UIImage(named: "help")))
-			cv_items.append(view_data(name: "Custom", image: UIImage(named: "help")))
+			cv_items.append(view_data(name: "Presets", image: UIImage(named: "help")))
 			cv_items.append(view_data(name: "Settings", image: UIImage(named: "help")))
 
         // Register cell classes
@@ -75,13 +75,15 @@ class DashboardCollectionViewController: UICollectionViewController {
     // Uncomment this method to specify if the specified item should be selected
     override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
 			
-			  let socketViewController = SocketCollectionViewController(nibName: "SocketCollectionViewController", bundle: nil)
+			var socketViewController = UIViewController()
 			
 			switch indexPath.row {
 			case 0:
-				socketViewController.isManual = true
+				socketViewController = SocketCollectionViewController(nibName: "SocketCollectionViewController", bundle: nil)
+				break
 			case 1:
-				socketViewController.isManual = false
+				socketViewController = PresetsViewController(nibName: "PresetsViewController", bundle: nil)
+				break
 			default:
 				break
 			}

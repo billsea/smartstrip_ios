@@ -41,10 +41,6 @@ class SocketCollectionViewController: UICollectionViewController, CBCentralManag
 	var positionCharacteristic: CBCharacteristic?
 	var alertController : UIAlertController!
 	
-	var isManual : Bool?
-	
-	var presets = [NSManagedObject]()
-	
 	//TEMP
 	let BLEService = "FFE0"
 	let BLECharacteristic = "FFE1"
@@ -62,8 +58,7 @@ class SocketCollectionViewController: UICollectionViewController, CBCentralManag
 			centralManager = CBCentralManager(delegate: self, queue: nil)
 			
 			//set data source
-			//self.save(name: "Test")//TEMP
-			isManual! ? self.loadManual() : self.loadPresets()
+			self.loadManual()
 
 			// Register cell classes
 			self.collectionView!.register(UINib(nibName: "SocketCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: reuseIdentifier)
@@ -81,42 +76,6 @@ class SocketCollectionViewController: UICollectionViewController, CBCentralManag
 			cv_items.append(view_socket(name: "Four", active: true))
 			cv_items.append(view_socket(name: "Five", active: true))
 			cv_items.append(view_socket(name: "Six", active: true))
-		}
-	
-		func loadPresets() {
-			let app = AppDelegate()
-			let context = app.persistentContainer.viewContext
-			let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Preset")
-			
-			do {
-				presets = try context.fetch(fetchRequest)
-				//Example .... temp
-				let presetOne = presets[0] as! Preset
-				let pname = presetOne.name
-				let pnameAlt = presetOne.value(forKeyPath: "name") as? String
-				
-			} catch let error as NSError {
-				print("Could not fetch. \(error), \(error.userInfo)")
-			}
-		}
-	
-		func save(name: String) {
-			guard let appDelegate =
-				UIApplication.shared.delegate as? AppDelegate else {
-					return
-			}
-			
-			let managedContext = appDelegate.persistentContainer.viewContext
-			let entity = NSEntityDescription.entity(forEntityName: "Preset", in: managedContext)!
-			let preset = NSManagedObject(entity: entity,  insertInto: managedContext)
-			preset.setValue(name, forKeyPath: "name")
-			
-			do {
-				try managedContext.save()
-				presets.append(preset)
-			} catch let error as NSError {
-				print("Could not save. \(error), \(error.userInfo)")
-			}
 		}
 	
 		func showProgressAlert() {
