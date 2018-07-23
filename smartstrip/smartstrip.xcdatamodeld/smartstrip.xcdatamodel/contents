@@ -6,12 +6,13 @@
         <relationship name="socket_item" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Socket" inverseName="preset" inverseEntity="Socket" syncable="YES"/>
     </entity>
     <entity name="Socket" representedClassName="Socket" syncable="YES" codeGenerationType="class">
+        <attribute name="active" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="position" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="preset" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Preset" inverseName="socket_item" inverseEntity="Preset" syncable="YES"/>
     </entity>
     <elements>
         <element name="Preset" positionX="-63" positionY="-18" width="128" height="88"/>
-        <element name="Socket" positionX="153" positionY="33" width="128" height="88"/>
+        <element name="Socket" positionX="153" positionY="33" width="128" height="105"/>
     </elements>
 </model>

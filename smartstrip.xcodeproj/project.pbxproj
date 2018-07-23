@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A95D8A4921016FE900B01B65 /* PresetsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95D8A4721016FE900B01B65 /* PresetsViewController.swift */; };
-		A95D8A4A21016FE900B01B65 /* PresetsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A95D8A4821016FE900B01B65 /* PresetsViewController.xib */; };
+		A95D8A4921016FE900B01B65 /* PresetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95D8A4721016FE900B01B65 /* PresetViewController.swift */; };
+		A95D8A4A21016FE900B01B65 /* PresetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A95D8A4821016FE900B01B65 /* PresetViewController.xib */; };
 		A9BA1BC120F42FC800F6E329 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BA1BC020F42FC800F6E329 /* AppDelegate.swift */; };
 		A9BA1BC620F42FC800F6E329 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A9BA1BC420F42FC800F6E329 /* Main.storyboard */; };
 		A9BA1BC920F42FC800F6E329 /* smartstrip.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A9BA1BC720F42FC800F6E329 /* smartstrip.xcdatamodeld */; };
@@ -24,6 +24,10 @@
 		A9C0954020F5731E00929A72 /* SocketCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9C0953E20F5731E00929A72 /* SocketCollectionViewCell.xib */; };
 		A9C0954720F574A400929A72 /* SocketCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C0954520F574A400929A72 /* SocketCollectionViewController.swift */; };
 		A9C0954820F574A400929A72 /* SocketCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9C0954620F574A400929A72 /* SocketCollectionViewController.xib */; };
+		A9E098872106583600F2E348 /* PresetsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9E098852106583600F2E348 /* PresetsTableViewController.swift */; };
+		A9E098882106583600F2E348 /* PresetsTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9E098862106583600F2E348 /* PresetsTableViewController.xib */; };
+		A9E0988B21065A6B00F2E348 /* PresetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9E0988921065A6B00F2E348 /* PresetTableViewCell.swift */; };
+		A9E0988C21065A6B00F2E348 /* PresetTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9E0988A21065A6B00F2E348 /* PresetTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,8 +48,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		A95D8A4721016FE900B01B65 /* PresetsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetsViewController.swift; sourceTree = "<group>"; };
-		A95D8A4821016FE900B01B65 /* PresetsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PresetsViewController.xib; sourceTree = "<group>"; };
+		A95D8A4721016FE900B01B65 /* PresetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetViewController.swift; sourceTree = "<group>"; };
+		A95D8A4821016FE900B01B65 /* PresetViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PresetViewController.xib; sourceTree = "<group>"; };
 		A9BA1BBD20F42FC800F6E329 /* smartstrip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = smartstrip.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9BA1BC020F42FC800F6E329 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A9BA1BC520F42FC800F6E329 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -67,6 +71,10 @@
 		A9C0953E20F5731E00929A72 /* SocketCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SocketCollectionViewCell.xib; sourceTree = "<group>"; };
 		A9C0954520F574A400929A72 /* SocketCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketCollectionViewController.swift; sourceTree = "<group>"; };
 		A9C0954620F574A400929A72 /* SocketCollectionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SocketCollectionViewController.xib; sourceTree = "<group>"; };
+		A9E098852106583600F2E348 /* PresetsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetsTableViewController.swift; sourceTree = "<group>"; };
+		A9E098862106583600F2E348 /* PresetsTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PresetsTableViewController.xib; sourceTree = "<group>"; };
+		A9E0988921065A6B00F2E348 /* PresetTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetTableViewCell.swift; sourceTree = "<group>"; };
+		A9E0988A21065A6B00F2E348 /* PresetTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PresetTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,8 +136,10 @@
 				A9BA1BF220F4346D00F6E329 /* DashboardCollectionViewController.xib */,
 				A9C0954520F574A400929A72 /* SocketCollectionViewController.swift */,
 				A9C0954620F574A400929A72 /* SocketCollectionViewController.xib */,
-				A95D8A4721016FE900B01B65 /* PresetsViewController.swift */,
-				A95D8A4821016FE900B01B65 /* PresetsViewController.xib */,
+				A95D8A4721016FE900B01B65 /* PresetViewController.swift */,
+				A95D8A4821016FE900B01B65 /* PresetViewController.xib */,
+				A9E098852106583600F2E348 /* PresetsTableViewController.swift */,
+				A9E098862106583600F2E348 /* PresetsTableViewController.xib */,
 			);
 			path = smartstrip;
 			sourceTree = "<group>";
@@ -159,6 +169,8 @@
 				A9BA1BFB20F443FA00F6E329 /* DashboardCollectionViewCell.xib */,
 				A9C0953D20F5731E00929A72 /* SocketCollectionViewCell.swift */,
 				A9C0953E20F5731E00929A72 /* SocketCollectionViewCell.xib */,
+				A9E0988921065A6B00F2E348 /* PresetTableViewCell.swift */,
+				A9E0988A21065A6B00F2E348 /* PresetTableViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -269,12 +281,14 @@
 			files = (
 				A9BA1BCE20F42FC900F6E329 /* LaunchScreen.storyboard in Resources */,
 				A9BA1BF420F4346D00F6E329 /* DashboardCollectionViewController.xib in Resources */,
+				A9E098882106583600F2E348 /* PresetsTableViewController.xib in Resources */,
 				A9BA1BCB20F42FC900F6E329 /* Assets.xcassets in Resources */,
+				A9E0988C21065A6B00F2E348 /* PresetTableViewCell.xib in Resources */,
 				A9C0954820F574A400929A72 /* SocketCollectionViewController.xib in Resources */,
 				A9C0954020F5731E00929A72 /* SocketCollectionViewCell.xib in Resources */,
 				A9BA1BC620F42FC800F6E329 /* Main.storyboard in Resources */,
 				A9BA1BFD20F443FA00F6E329 /* DashboardCollectionViewCell.xib in Resources */,
-				A95D8A4A21016FE900B01B65 /* PresetsViewController.xib in Resources */,
+				A95D8A4A21016FE900B01B65 /* PresetViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -299,8 +313,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9E0988B21065A6B00F2E348 /* PresetTableViewCell.swift in Sources */,
+				A9E098872106583600F2E348 /* PresetsTableViewController.swift in Sources */,
 				A9BA1BC920F42FC800F6E329 /* smartstrip.xcdatamodeld in Sources */,
-				A95D8A4921016FE900B01B65 /* PresetsViewController.swift in Sources */,
+				A95D8A4921016FE900B01B65 /* PresetViewController.swift in Sources */,
 				A9BA1BF320F4346D00F6E329 /* DashboardCollectionViewController.swift in Sources */,
 				A9BA1BFC20F443FA00F6E329 /* DashboardCollectionViewCell.swift in Sources */,
 				A9BA1BC120F42FC800F6E329 /* AppDelegate.swift in Sources */,

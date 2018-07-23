@@ -75,20 +75,22 @@ class DashboardCollectionViewController: UICollectionViewController {
     // Uncomment this method to specify if the specified item should be selected
     override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
 			
-			var socketViewController = UIViewController()
+			var vc = UIViewController()
+			var animate = false
 			
 			switch indexPath.row {
 			case 0:
-				socketViewController = SocketCollectionViewController(nibName: "SocketCollectionViewController", bundle: nil)
+				vc = SocketCollectionViewController(nibName: "SocketCollectionViewController", bundle: nil)
 				break
 			case 1:
-				socketViewController = PresetsViewController(nibName: "PresetsViewController", bundle: nil)
+				vc = PresetsTableViewController(nibName: "PresetsTableViewController", bundle: nil)
+				animate = true
 				break
 			default:
 				break
 			}
 			
-			navigationController?.pushViewController(socketViewController, animated: false)
+			navigationController?.pushViewController(vc, animated: animate)
 			
         return true
     }
