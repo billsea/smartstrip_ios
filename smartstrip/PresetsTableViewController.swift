@@ -17,18 +17,40 @@ class PresetsTableViewController: UITableViewController {
 	
     override func viewDidLoad() {
         super.viewDidLoad()
-         self.navigationItem.rightBarButtonItem = self.editButtonItem
+			
+			let addButton = UIBarButtonItem(
+				title: "Add",
+				style: .plain,
+				target: self,
+				action: #selector(addPreset(sender:))
+			)
+			
+			self.navigationItem.rightBarButtonItem = addButton
 			
 			self.tableView.register(UINib(nibName: "PresetTableViewCell", bundle: nil), forCellReuseIdentifier: reuseIdentifier)
 			
-			//set data source
-			//self.save(name: "TestWithSocket")//TEMP
 			self.loadPresets()
     }
 
 	
+	  @objc func addPreset(sender: UIBarButtonItem) {
+			let alert = UIAlertController(title: "Some Title", message: "Enter a text", preferredStyle: .alert)
+			
+			alert.addTextField { (textField) in
+				textField.placeholder = "Enter preset name"
+			}
+			
+			alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
+				let textField = alert?.textFields![0]
+				self.save(name: (textField?.text)!)
+			}))
+			
+			// 4. Present the alert.
+			self.present(alert, animated: true, completion: nil)
+		}
+	
 		func loadPresets() {
-			//This is the most reliable way I've fount to fetch data - bill
+			//This is the most reliable way I've fount to fetch data with Swift - bill
 			guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
 				return
 			}
@@ -54,19 +76,22 @@ class PresetsTableViewController: UITableViewController {
 			let preset = NSManagedObject(entity: entity,  insertInto: managedContext) as! Preset
 			preset.setValue(name, forKeyPath: "name")
 			
-			
-			//TEMP: TODO REMOVE
-			for number in [0,1,2,3,4,5] {
+			var idx = 0
+			for number in ["One","Two","Three","Four","Five","Six"] {
 				let sockEntity = NSEntityDescription.entity(forEntityName: "Socket", in: managedContext)!
 				let tempSock = NSManagedObject(entity: sockEntity,  insertInto: managedContext) as! Socket
-				tempSock.setValue(String(number), forKeyPath: "name")
+				tempSock.setValue(number, forKeyPath: "name")
+				tempSock.setValue(true, forKey: "active")
+				tempSock.setValue(idx, forKey: "position")
 				preset.addToSockets(tempSock)
+				idx = idx + 1
 			}
 
 			
 			do {
 				try managedContext.save()
 				presets.append(preset)
+				self.tableView.reloadData()
 			} catch let error as NSError {
 				print("Could not save. \(error), \(error.userInfo)")
 			}
@@ -78,7 +103,7 @@ class PresetsTableViewController: UITableViewController {
     }
 
     // MARK: - Table view data source
-
+	
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -114,6 +139,8 @@ class PresetsTableViewController: UITableViewController {
 			vc.selectedPreset = cell.selectedPreset
 			self.navigationController?.pushViewController(vc, animated: false)
 		}
+	
+	
     /*
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
