@@ -28,7 +28,7 @@ class PresetsTableViewController: UITableViewController {
 
 	
 		func loadPresets() {
-			
+			//This is the most reliable way I've fount to fetch data - bill
 			guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
 				return
 			}
@@ -41,7 +41,6 @@ class PresetsTableViewController: UITableViewController {
 			} catch let error as NSError {
 				print("Could not fetch. \(error), \(error.userInfo)")
 			}
-			
 		}
 	
 		func save(name: String) {
