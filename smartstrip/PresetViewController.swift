@@ -13,46 +13,22 @@ private let reuseIdentifier = "Cell"
 
 class PresetViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource{
 
-	var selIndexRow : NSInteger = 0
 	var selectedPreset : Preset?
-	var presets = [NSManagedObject]()
 	
 	@IBOutlet weak var collectionView: UICollectionView!
 	
 	override func viewDidLoad() {
         super.viewDidLoad()
 
-			self.title = "Preset"
-		
-		  self.loadPreset()
+			self.title = selectedPreset?.name
 		
 			// Register cell classes
 			self.collectionView!.register(UINib(nibName: "SocketCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: reuseIdentifier)
-		
-		  self.collectionView.delegate = self as? UICollectionViewDelegate
 			
 			let editButton = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(editTapped))
 			
 			navigationItem.rightBarButtonItems = [editButton]
-			
-		
     }
-	
-	func loadPreset() {
-		let app = AppDelegate()
-		let context = app.persistentContainer.viewContext
-		let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Preset")
-		
-		do {
-			presets = try context.fetch(fetchRequest)
-			selectedPreset = presets[selIndexRow] as? Preset
-		
-			//TODO: Sort preset's socket items by position index
-			
-		} catch let error as NSError {
-			print("Could not fetch. \(error), \(error.userInfo)")
-		}
-	}
 	
 		func save(name: String) {
 			guard let appDelegate =
@@ -79,21 +55,33 @@ class PresetViewController: UIViewController, UICollectionViewDelegate, UICollec
 		}
 
 		func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-			return (selectedPreset?.socket_item?.count)!
+			return (selectedPreset?.sockets?.count)!
 		}
 
 		func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 			let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! SocketCollectionViewCell
 			
-//			// Configure the cell
-			let socketObjects = selectedPreset?.socket_item?.allObjects
-			if(socketObjects != nil){
-				let current_socket = socketObjects![indexPath.row] as! Socket
-				cell.backgroundColor = current_socket.active ? UIColor.green : UIColor.red
-				cell.cellName.text =  current_socket.name
+			let socketList = selectedPreset?.sockets?.allObjects as! [Socket]
+			
+			if((socketList.count) > 0){
+				cell.selSocket = socketList[indexPath.row]
+				cell.backgroundColor = socketList[indexPath.row].active ? UIColor.green : UIColor.red
+				cell.cellName.text =  socketList[indexPath.row].name
 			}
 			
 			return cell
+		}
+	
+
+		func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+			let vc = SocketDetailViewController(nibName: "SocketDetailViewController", bundle: nil)
+			vc.cellIndex = indexPath.row
+			let cell = self.collectionView.cellForItem(at: indexPath) as! SocketCollectionViewCell
+			vc.selSocket = cell.selSocket!
+			
+			self.navigationController?.pushViewController(vc, animated: false)
+			
+			return true
 		}
 	
     override func didReceiveMemoryWarning() {
@@ -103,9 +91,10 @@ class PresetViewController: UIViewController, UICollectionViewDelegate, UICollec
     
 
 		@objc func editTapped(sender: AnyObject) {
-			let snd = sender as! UIBarButtonItem
+			//let snd = sender as! UIBarButtonItem
 			
 		}
+	
     /*
     // MARK: - Navigation
 

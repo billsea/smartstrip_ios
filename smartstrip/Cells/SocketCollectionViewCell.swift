@@ -12,6 +12,8 @@ class SocketCollectionViewCell: UICollectionViewCell {
 
 	@IBOutlet weak var cellName: UILabel!
 	@IBOutlet weak var cellImage: UIImageView!
+	var selSocket : Socket?
+	
 	override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

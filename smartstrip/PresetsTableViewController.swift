@@ -13,7 +13,7 @@ private let reuseIdentifier = "PresetsCell"
 
 class PresetsTableViewController: UITableViewController {
 
-		var presets = [NSManagedObject]()
+	var presets : [NSManagedObject] = []
 	
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,26 +22,26 @@ class PresetsTableViewController: UITableViewController {
 			self.tableView.register(UINib(nibName: "PresetTableViewCell", bundle: nil), forCellReuseIdentifier: reuseIdentifier)
 			
 			//set data source
-			self.save(name: "TestWithSocket")//TEMP
+			//self.save(name: "TestWithSocket")//TEMP
 			self.loadPresets()
     }
 
 	
 		func loadPresets() {
-			let app = AppDelegate()
-			let context = app.persistentContainer.viewContext
+			
+			guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+				return
+			}
+			
+			let managedContext = appDelegate.persistentContainer.viewContext
 			let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Preset")
 			
 			do {
-				presets = try context.fetch(fetchRequest)
-				//Example .... temp
-				let presetOne = presets[0] as! Preset
-				let pname = presetOne.name
-				let pnameAlt = presetOne.value(forKeyPath: "name") as? String
-				
+				presets = try managedContext.fetch(fetchRequest)
 			} catch let error as NSError {
 				print("Could not fetch. \(error), \(error.userInfo)")
 			}
+			
 		}
 	
 		func save(name: String) {
@@ -61,7 +61,7 @@ class PresetsTableViewController: UITableViewController {
 				let sockEntity = NSEntityDescription.entity(forEntityName: "Socket", in: managedContext)!
 				let tempSock = NSManagedObject(entity: sockEntity,  insertInto: managedContext) as! Socket
 				tempSock.setValue(String(number), forKeyPath: "name")
-				preset.addToSocket_item(tempSock)
+				preset.addToSockets(tempSock)
 			}
 
 			
@@ -93,9 +93,12 @@ class PresetsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 			let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! PresetTableViewCell
 
-			 let preset = presets[indexPath.row] as! Preset
+			let preset = presets[indexPath.row] as! Preset
+			cell.selectedPreset = preset
 			
-				cell.cellLabel.text = preset.name
+			if let presetName = preset.name {
+				cell.cellLabel.text = presetName
+			}
 
         return cell
     }
@@ -106,11 +109,12 @@ class PresetsTableViewController: UITableViewController {
         return true
     }
 
-	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		let vc = PresetViewController(nibName: "PresetViewController", bundle: nil)
-		vc.selIndexRow = indexPath.row
-		self.navigationController?.pushViewController(vc, animated: false)
-	}
+		override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+			let vc = PresetViewController(nibName: "PresetViewController", bundle: nil)
+			let cell = self.tableView.cellForRow(at: indexPath) as! PresetTableViewCell
+			vc.selectedPreset = cell.selectedPreset
+			self.navigationController?.pushViewController(vc, animated: false)
+		}
     /*
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {

@@ -11,6 +11,7 @@ import UIKit
 class PresetTableViewCell: UITableViewCell {
 
 	@IBOutlet weak var cellLabel: UILabel!
+	var selectedPreset : Preset?
 	override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
