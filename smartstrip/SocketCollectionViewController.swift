@@ -41,7 +41,7 @@ class SocketCollectionViewController: UICollectionViewController, CBCentralManag
 	var positionCharacteristic: CBCharacteristic?
 	var alertController : UIAlertController!
 	
-	//TEMP
+	//TEMP TODO: Un-hardcode these values
 	let BLEService = "FFE0"
 	let BLECharacteristic = "FFE1"
 	
