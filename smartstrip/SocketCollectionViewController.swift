@@ -11,20 +11,11 @@ import CoreData
 
 private let reuseIdentifier = "Cell"
 
-class view_socket {
-	var name : String?
-	var active : Bool?
-	init(name: String?, active : Bool?) {
-		self.name = name
-		self.active = active
-	}
-}
-
 class SocketCollectionViewController: UICollectionViewController, UIAlertViewDelegate  {
 	var alertController : UIAlertController!
 	let bleShared = bleSharedInstance
-	
-	var cv_items = [view_socket]()
+
+	var cv_items = [ViewSocket]()
 	
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,12 +45,12 @@ class SocketCollectionViewController: UICollectionViewController, UIAlertViewDel
     }
 			
 		func loadManual(){
-			cv_items.append(view_socket(name: "One", active: true))
-			cv_items.append(view_socket(name: "Two",  active: true))
-			cv_items.append(view_socket(name: "Three", active: true))
-			cv_items.append(view_socket(name: "Four", active: true))
-			cv_items.append(view_socket(name: "Five", active: true))
-			cv_items.append(view_socket(name: "Six", active: true))
+			cv_items.append(ViewSocket(name: "One", active: true))
+			cv_items.append(ViewSocket(name: "Two",  active: true))
+			cv_items.append(ViewSocket(name: "Three", active: true))
+			cv_items.append(ViewSocket(name: "Four", active: true))
+			cv_items.append(ViewSocket(name: "Five", active: true))
+			cv_items.append(ViewSocket(name: "Six", active: true))
 		}
 	
 		func showProgressAlert() {
@@ -90,7 +81,7 @@ class SocketCollectionViewController: UICollectionViewController, UIAlertViewDel
 				let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! SocketCollectionViewCell
 		
 				// Configure the cell
-				let current_socket = cv_items[indexPath.row] as view_socket
+				let current_socket = cv_items[indexPath.row] as ViewSocket
 				cell.backgroundColor = current_socket.active! ? UIColor.green : UIColor.red
 				cell.cellName.text =  current_socket.name
 		
@@ -129,7 +120,7 @@ class SocketCollectionViewController: UICollectionViewController, UIAlertViewDel
 			}
 
 			for item in socket_change {
-				let sel_socket = cv_items[item] as view_socket
+				let sel_socket = cv_items[item] as ViewSocket
 				sel_socket.active = status == 0 ? false : true
 			}
 			

@@ -13,9 +13,11 @@ private let reuseIdentifier = "Cell"
 
 class PresetViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource{
 
+	let bleShared = bleSharedInstance
 	var selectedPreset : Preset?
 	var managedContext : NSManagedObjectContext?
 	var socketList : [Socket] = []
+	var cv_items = [ViewSocket]()
 	
 	@IBOutlet weak var collectionView: UICollectionView!
 	
@@ -39,9 +41,14 @@ class PresetViewController: UIViewController, UICollectionViewDelegate, UICollec
 			navigationItem.rightBarButtonItems = [editButton]
 		
 			// Discover bluetooth devices
-			let bleShared = bleSharedInstance
 			bleShared.updateCollectionCallback = {(_ socket_index: Int, _ status: Int) -> Void in
 				self.updateCollectionData(socket_index: socket_index, status: status)
+			}
+		
+			bleShared.connectCallback = {(_ status: Bool) -> Void in
+				//TODO: Add spinner or status update
+				self.collectionView?.isHidden = false
+				print("connected!")
 			}
 		
     }
@@ -77,24 +84,27 @@ class PresetViewController: UIViewController, UICollectionViewDelegate, UICollec
 	
 	func updateCollectionData(socket_index : Int, status: Int){
 		//Update UI - TODO
-//		var socket_change = [NSInteger]()
-//
-//		if(socket_index == 2){
-//			socket_change.append(2)
-//			socket_change.append(3)
-//		} else if (socket_index == 3){
-//			socket_change.append(4)
-//			socket_change.append(5)
-//		} else {
-//			socket_change.append(socket_index)
-//		}
-//
-//		for item in socket_change {
-//			let sel_socket = cv_items[item] as view_socket
-//			sel_socket.active = status == 0 ? false : true
-//		}
+		var socket_change = [NSInteger]()
+
+		if(socket_index == 2){
+			socket_change.append(2)
+			socket_change.append(3)
+		} else if (socket_index == 3){
+			socket_change.append(4)
+			socket_change.append(5)
+		} else {
+			socket_change.append(socket_index)
+		}
+
+		for item in socket_change {
+			let sel_socket = cv_items[item] as ViewSocket
+			sel_socket.active = status == 0 ? false : true
+		}
 		
-		self.collectionView?.reloadData()
+		DispatchQueue.main.async() {
+			self.collectionView?.reloadData()
+		}
+		
 	}
 	
 		// MARK: UICollectionViewDataSource
