@@ -8,11 +8,12 @@
     <entity name="Socket" representedClassName="Socket" syncable="YES" codeGenerationType="class">
         <attribute name="active" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="position" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="position" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="power_index" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="preset" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Preset" inverseName="sockets" inverseEntity="Preset" syncable="YES"/>
     </entity>
     <elements>
         <element name="Preset" positionX="-63" positionY="-18" width="128" height="90"/>
-        <element name="Socket" positionX="153" positionY="33" width="128" height="105"/>
+        <element name="Socket" positionX="153" positionY="33" width="128" height="120"/>
     </elements>
 </model>

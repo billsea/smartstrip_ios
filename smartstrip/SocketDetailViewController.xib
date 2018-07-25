@@ -13,7 +13,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SocketDetailViewController" customModule="smartstrip" customModuleProvider="target">
             <connections>
                 <outlet property="socketName" destination="Gi9-BQ-OgH" id="EMO-o5-smG"/>
-                <outlet property="socketPosition" destination="UVx-fC-V4L" id="Wi1-Lj-noY"/>
+                <outlet property="socketPowerIndex" destination="UVx-fC-V4L" id="s0D-Im-7nL"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -38,6 +38,9 @@
                         <segment title="Third"/>
                         <segment title="Fourth"/>
                     </segments>
+                    <connections>
+                        <action selector="powerIndexHit:" destination="-1" eventType="valueChanged" id="uqh-rA-qGg"/>
+                    </connections>
                 </segmentedControl>
                 <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Gi9-BQ-OgH">
                     <rect key="frame" x="16" y="125" width="343" height="30"/>

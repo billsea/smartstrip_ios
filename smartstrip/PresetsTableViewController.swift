@@ -34,7 +34,7 @@ class PresetsTableViewController: UITableViewController {
 
 	
 	  @objc func addPreset(sender: UIBarButtonItem) {
-			let alert = UIAlertController(title: "Some Title", message: "Enter a text", preferredStyle: .alert)
+			let alert = UIAlertController(title: "Preset Name", message: "Enter a name for preset", preferredStyle: .alert)
 			
 			alert.addTextField { (textField) in
 				textField.placeholder = "Enter preset name"
@@ -45,7 +45,6 @@ class PresetsTableViewController: UITableViewController {
 				self.save(name: (textField?.text)!)
 			}))
 			
-			// 4. Present the alert.
 			self.present(alert, animated: true, completion: nil)
 		}
 	
@@ -75,6 +74,7 @@ class PresetsTableViewController: UITableViewController {
 			let entity = NSEntityDescription.entity(forEntityName: "Preset", in: managedContext)!
 			let preset = NSManagedObject(entity: entity,  insertInto: managedContext) as! Preset
 			preset.setValue(name, forKeyPath: "name")
+			preset.setValue(Date(), forKeyPath: "date_created")
 			
 			var idx = 0
 			for number in ["One","Two","Three","Four","Five","Six"] {
@@ -83,6 +83,16 @@ class PresetsTableViewController: UITableViewController {
 				tempSock.setValue(number, forKeyPath: "name")
 				tempSock.setValue(true, forKey: "active")
 				tempSock.setValue(idx, forKey: "position")
+				
+				var idxPower = idx
+				if(idx==2 || idx == 3){
+					idxPower = 2
+				} else if (idx==4 || idx == 5){
+					idxPower = 3
+				}
+				tempSock.setValue(idxPower, forKey: "power_index")
+				
+				
 				preset.addToSockets(tempSock)
 				idx = idx + 1
 			}

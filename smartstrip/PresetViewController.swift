@@ -14,6 +14,8 @@ private let reuseIdentifier = "Cell"
 class PresetViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource{
 
 	var selectedPreset : Preset?
+	var managedContext : NSManagedObjectContext?
+	var socketList : [Socket] = []
 	
 	@IBOutlet weak var collectionView: UICollectionView!
 	
@@ -21,6 +23,13 @@ class PresetViewController: UIViewController, UICollectionViewDelegate, UICollec
         super.viewDidLoad()
 
 			self.title = selectedPreset?.name
+		
+			guard let appDelegate =
+				UIApplication.shared.delegate as? AppDelegate else {
+					return
+			}
+		
+			managedContext = appDelegate.persistentContainer.viewContext
 		
 			// Register cell classes
 			self.collectionView!.register(UINib(nibName: "SocketCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: reuseIdentifier)
@@ -30,25 +39,34 @@ class PresetViewController: UIViewController, UICollectionViewDelegate, UICollec
 			navigationItem.rightBarButtonItems = [editButton]
     }
 	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		
+		self.saveContext()
+		
+		socketList = selectedPreset?.sockets?.allObjects as! [Socket]
+		socketList.sort(by: { $0.position < $1.position })
+		
+		self.collectionView.reloadData()
+	}
+	
 		func save(name: String) {
-			guard let appDelegate =
-				UIApplication.shared.delegate as? AppDelegate else {
-					return
-			}
 			
-			let managedContext = appDelegate.persistentContainer.viewContext
-			let entity = NSEntityDescription.entity(forEntityName: "Preset", in: managedContext)!
+			let entity = NSEntityDescription.entity(forEntityName: "Preset", in: managedContext!)!
 			let preset = NSManagedObject(entity: entity,  insertInto: managedContext)
 			preset.setValue(name, forKeyPath: "name")
 			
-			do {
-				try managedContext.save()
-			} catch let error as NSError {
-				print("Could not save. \(error), \(error.userInfo)")
-			}
+			self.saveContext()
 		}
 	
 	
+	func saveContext() {
+		do {
+			try managedContext?.save()
+		} catch let error as NSError {
+			print("Could not save. \(error), \(error.userInfo)")
+		}
+	}
 		// MARK: UICollectionViewDataSource
 		func numberOfSections(in collectionView: UICollectionView) -> Int {
 			return 1
@@ -61,12 +79,10 @@ class PresetViewController: UIViewController, UICollectionViewDelegate, UICollec
 		func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 			let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! SocketCollectionViewCell
 			
-			let socketList = selectedPreset?.sockets?.allObjects as! [Socket]
-			
 			if((socketList.count) > 0){
 				cell.selSocket = socketList[indexPath.row]
 				cell.backgroundColor = socketList[indexPath.row].active ? UIColor.green : UIColor.red
-				cell.cellName.text =  socketList[indexPath.row].name
+				cell.cellName.text =  socketList[indexPath.row].name! + ":" + String(socketList[indexPath.row].power_index + 1)
 			}
 			
 			return cell
@@ -78,7 +94,7 @@ class PresetViewController: UIViewController, UICollectionViewDelegate, UICollec
 			vc.cellIndex = indexPath.row
 			let cell = self.collectionView.cellForItem(at: indexPath) as! SocketCollectionViewCell
 			vc.selSocket = cell.selSocket!
-			
+			vc.socketList = socketList
 			self.navigationController?.pushViewController(vc, animated: false)
 			
 			return true
