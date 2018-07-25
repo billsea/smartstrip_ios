@@ -6,6 +6,12 @@
 //  Copyright © 2018 Loudsoftware. All rights reserved.
 //
 
+//NOTES:
+//<CBPeripheral: 0x105427da0, identifier = 26F927A3-C31C-D452-AEBA-FB2D5FC71825, name = HMSoft, state = disconnected>
+//<CBService: 0x105406f10, isPrimary = YES, UUID = FFE0>
+//<CBCharacteristic: 0x1014ed3a0, UUID = FFE1, properties = 0x16, value = (null), notifying = NO>
+
+
 import Foundation
 import CoreBluetooth
 
@@ -18,7 +24,7 @@ enum HW_SOCKET : UInt8 {
 	case ALL
 }
 
-private let reuseIdentifier = "Cell"
+
 private let bleShieldName = "HMSoft"
 
 let bleSharedInstance = BLEConnectShared();
@@ -34,6 +40,7 @@ class BLEConnectShared: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate
 	let BLECharacteristic = "FFE1"
 	
 	var updateCollectionCallback: ((_ socket_index: Int, _ status: Int) -> Void)?
+	var connectCallback: ((_ connected: Bool) -> Void)?
 	
 	override init() {
 		super.init()
@@ -57,7 +64,8 @@ class BLEConnectShared: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate
 		centralManager?.stopScan()
 		if((HmSoftPeripheral) != nil){
 			centralManager?.connect(HmSoftPeripheral!, options: nil)
-			//dismiss the progress dialog: TODO
+			//notify caller
+			self.connectCallback!(true)
 			//alertController.dismiss(animated: true, completion: nil);
 		}
 	}
