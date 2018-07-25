@@ -13,14 +13,6 @@ import CoreData
 private let reuseIdentifier = "Cell"
 private let bleShieldName = "HMSoft"
 
-enum HW_SOCKET : UInt8 {
-	case ONE
-	case TWO
-	case THREE
-	case FOUR
-	case ALL
-}
-
 class view_socket {
 	var name : String?
 	var active : Bool?
@@ -166,6 +158,7 @@ class SocketCollectionViewController: UICollectionViewController, CBCentralManag
 			
 			self.collectionView?.reloadData()
 		}
+	
 	//MARK: BLE Calls
 
 		// MARK: BLE Scanning

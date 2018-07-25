@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		A95D8A4921016FE900B01B65 /* PresetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95D8A4721016FE900B01B65 /* PresetViewController.swift */; };
 		A95D8A4A21016FE900B01B65 /* PresetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A95D8A4821016FE900B01B65 /* PresetViewController.xib */; };
+		A95F08972108FE12001CCE03 /* BLEConnectShared.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95F08962108FE12001CCE03 /* BLEConnectShared.swift */; };
 		A97E74512106948E004D1953 /* SocketDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97E744F2106948E004D1953 /* SocketDetailViewController.swift */; };
 		A97E74522106948E004D1953 /* SocketDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A97E74502106948E004D1953 /* SocketDetailViewController.xib */; };
 		A9BA1BC120F42FC800F6E329 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BA1BC020F42FC800F6E329 /* AppDelegate.swift */; };
@@ -52,6 +53,7 @@
 /* Begin PBXFileReference section */
 		A95D8A4721016FE900B01B65 /* PresetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetViewController.swift; sourceTree = "<group>"; };
 		A95D8A4821016FE900B01B65 /* PresetViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PresetViewController.xib; sourceTree = "<group>"; };
+		A95F08962108FE12001CCE03 /* BLEConnectShared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLEConnectShared.swift; sourceTree = "<group>"; };
 		A97E744F2106948E004D1953 /* SocketDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketDetailViewController.swift; sourceTree = "<group>"; };
 		A97E74502106948E004D1953 /* SocketDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SocketDetailViewController.xib; sourceTree = "<group>"; };
 		A9BA1BBD20F42FC800F6E329 /* smartstrip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = smartstrip.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -106,6 +108,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A95F08982108FE23001CCE03 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				A95F08962108FE12001CCE03 /* BLEConnectShared.swift */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
 		A9BA1BB420F42FC800F6E329 = {
 			isa = PBXGroup;
 			children = (
@@ -146,6 +156,7 @@
 				A9E098862106583600F2E348 /* PresetsTableViewController.xib */,
 				A97E744F2106948E004D1953 /* SocketDetailViewController.swift */,
 				A97E74502106948E004D1953 /* SocketDetailViewController.xib */,
+				A95F08982108FE23001CCE03 /* Classes */,
 			);
 			path = smartstrip;
 			sourceTree = "<group>";
@@ -329,6 +340,7 @@
 				A9BA1BFC20F443FA00F6E329 /* DashboardCollectionViewCell.swift in Sources */,
 				A9BA1BC120F42FC800F6E329 /* AppDelegate.swift in Sources */,
 				A9C0953F20F5731E00929A72 /* SocketCollectionViewCell.swift in Sources */,
+				A95F08972108FE12001CCE03 /* BLEConnectShared.swift in Sources */,
 				A9C0954720F574A400929A72 /* SocketCollectionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

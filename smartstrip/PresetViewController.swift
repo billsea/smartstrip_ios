@@ -37,6 +37,13 @@ class PresetViewController: UIViewController, UICollectionViewDelegate, UICollec
 			let editButton = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(editTapped))
 			
 			navigationItem.rightBarButtonItems = [editButton]
+		
+			// Discover bluetooth devices
+			let bleShared = bleSharedInstance
+			bleShared.updateCollectionCallback = {(_ socket_index: Int, _ status: Int) -> Void in
+				self.updateCollectionData(socket_index: socket_index, status: status)
+			}
+		
     }
 	
 	override func viewWillAppear(_ animated: Bool) {
@@ -67,6 +74,29 @@ class PresetViewController: UIViewController, UICollectionViewDelegate, UICollec
 			print("Could not save. \(error), \(error.userInfo)")
 		}
 	}
+	
+	func updateCollectionData(socket_index : Int, status: Int){
+		//Update UI - TODO
+//		var socket_change = [NSInteger]()
+//
+//		if(socket_index == 2){
+//			socket_change.append(2)
+//			socket_change.append(3)
+//		} else if (socket_index == 3){
+//			socket_change.append(4)
+//			socket_change.append(5)
+//		} else {
+//			socket_change.append(socket_index)
+//		}
+//
+//		for item in socket_change {
+//			let sel_socket = cv_items[item] as view_socket
+//			sel_socket.active = status == 0 ? false : true
+//		}
+		
+		self.collectionView?.reloadData()
+	}
+	
 		// MARK: UICollectionViewDataSource
 		func numberOfSections(in collectionView: UICollectionView) -> Int {
 			return 1
