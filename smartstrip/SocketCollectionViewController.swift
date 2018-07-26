@@ -10,8 +10,9 @@ import UIKit
 import CoreData
 
 private let reuseIdentifier = "Cell"
+private let reuseIdentifier2 = "DoubleCell"
 
-class SocketCollectionViewController: UICollectionViewController, UIAlertViewDelegate  {
+class SocketCollectionViewController: UICollectionViewController, UIAlertViewDelegate, UICollectionViewDelegateFlowLayout {
 	var alertController : UIAlertController!
 	let bleShared = bleSharedInstance
 
@@ -30,6 +31,7 @@ class SocketCollectionViewController: UICollectionViewController, UIAlertViewDel
 
 			// Register cell classes
 			self.collectionView!.register(UINib(nibName: "SocketCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: reuseIdentifier)
+			self.collectionView!.register(UINib(nibName: "DoubleSocketCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: reuseIdentifier2)
 			
 			// Discover bluetooth devices
 			bleShared.updateCollectionCallback = {(_ socket_index: Int, _ status: Int) -> Void in
@@ -49,8 +51,6 @@ class SocketCollectionViewController: UICollectionViewController, UIAlertViewDel
 			cv_items.append(ViewSocket(name: "Two",  active: true))
 			cv_items.append(ViewSocket(name: "Three", active: true))
 			cv_items.append(ViewSocket(name: "Four", active: true))
-			cv_items.append(ViewSocket(name: "Five", active: true))
-			cv_items.append(ViewSocket(name: "Six", active: true))
 		}
 	
 		func showProgressAlert() {
@@ -76,54 +76,49 @@ class SocketCollectionViewController: UICollectionViewController, UIAlertViewDel
 		override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 				return cv_items.count
 		}
+	
+	
+		func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+			if(indexPath.row < 2){
+				return CGSize(width: 160, height: 160)
+			} else {
+				return CGSize(width: collectionView.frame.width - 20, height: 160)
+			}
+		}
 
 		override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+			
+			if(indexPath.row < 2){
 				let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! SocketCollectionViewCell
-		
-				// Configure the cell
 				let current_socket = cv_items[indexPath.row] as ViewSocket
 				cell.backgroundColor = current_socket.active! ? UIColor.green : UIColor.red
 				cell.cellName.text =  current_socket.name
-		
 				return cell
+			} else {
+				let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier2, for: indexPath) as! DoubleSocketCollectionViewCell
+				let current_socket = cv_items[indexPath.row] as ViewSocket
+				cell.backgroundColor = current_socket.active! ? UIColor.green : UIColor.red
+				cell.cellName.text =  current_socket.name
+				return cell
+			}
+			
 		}
 
 		// MARK: UICollectionViewDelegate
 
 		// Uncomment this method to specify if the specified item should be selected
 		override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-			var sel_index = UInt8(indexPath.row)
 			
-			if(sel_index < 6){
-				if(indexPath.row == 3){
-					sel_index = HW_SOCKET.THREE.rawValue
-				} else if(indexPath.row >= 4){
-					sel_index = HW_SOCKET.FOUR.rawValue
-				}
-				bleShared.writeToBLE(value: sel_index)
-			}
+			let sel_index = UInt8(indexPath.row)
+			bleShared.writeToBLE(value: sel_index)
 			return true
 		}
 
 		func updateCollectionData(socket_index : Int, status: Int){
 			//Update UI
-			var socket_change = [NSInteger]()
-			
-			if(socket_index == 2){
-				socket_change.append(2)
-				socket_change.append(3)
-			} else if (socket_index == 3){
-				socket_change.append(4)
-				socket_change.append(5)
-			} else {
-				socket_change.append(socket_index)
-			}
+			let sel_socket = cv_items[socket_index] as ViewSocket
+			sel_socket.active = status == 0 ? false : true
 
-			for item in socket_change {
-				let sel_socket = cv_items[item] as ViewSocket
-				sel_socket.active = status == 0 ? false : true
-			}
-			
 			DispatchQueue.main.async() {
 				self.collectionView?.reloadData()
 			}

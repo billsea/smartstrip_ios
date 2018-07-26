@@ -13,6 +13,8 @@
 		A95F089A2109102A001CCE03 /* ViewSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95F08992109102A001CCE03 /* ViewSocket.swift */; };
 		A97E74512106948E004D1953 /* SocketDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97E744F2106948E004D1953 /* SocketDetailViewController.swift */; };
 		A97E74522106948E004D1953 /* SocketDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A97E74502106948E004D1953 /* SocketDetailViewController.xib */; };
+		A996B2D8210956680027C196 /* DoubleSocketCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A996B2D6210956680027C196 /* DoubleSocketCollectionViewCell.swift */; };
+		A996B2D9210956680027C196 /* DoubleSocketCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A996B2D7210956680027C196 /* DoubleSocketCollectionViewCell.xib */; };
 		A9BA1BC120F42FC800F6E329 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BA1BC020F42FC800F6E329 /* AppDelegate.swift */; };
 		A9BA1BC620F42FC800F6E329 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A9BA1BC420F42FC800F6E329 /* Main.storyboard */; };
 		A9BA1BC920F42FC800F6E329 /* smartstrip.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A9BA1BC720F42FC800F6E329 /* smartstrip.xcdatamodeld */; };
@@ -58,6 +60,8 @@
 		A95F08992109102A001CCE03 /* ViewSocket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewSocket.swift; sourceTree = "<group>"; };
 		A97E744F2106948E004D1953 /* SocketDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketDetailViewController.swift; sourceTree = "<group>"; };
 		A97E74502106948E004D1953 /* SocketDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SocketDetailViewController.xib; sourceTree = "<group>"; };
+		A996B2D6210956680027C196 /* DoubleSocketCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleSocketCollectionViewCell.swift; sourceTree = "<group>"; };
+		A996B2D7210956680027C196 /* DoubleSocketCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DoubleSocketCollectionViewCell.xib; sourceTree = "<group>"; };
 		A9BA1BBD20F42FC800F6E329 /* smartstrip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = smartstrip.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9BA1BC020F42FC800F6E329 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A9BA1BC520F42FC800F6E329 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -191,6 +195,8 @@
 				A9C0953E20F5731E00929A72 /* SocketCollectionViewCell.xib */,
 				A9E0988921065A6B00F2E348 /* PresetTableViewCell.swift */,
 				A9E0988A21065A6B00F2E348 /* PresetTableViewCell.xib */,
+				A996B2D6210956680027C196 /* DoubleSocketCollectionViewCell.swift */,
+				A996B2D7210956680027C196 /* DoubleSocketCollectionViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -305,6 +311,7 @@
 				A9BA1BCB20F42FC900F6E329 /* Assets.xcassets in Resources */,
 				A9E0988C21065A6B00F2E348 /* PresetTableViewCell.xib in Resources */,
 				A9C0954820F574A400929A72 /* SocketCollectionViewController.xib in Resources */,
+				A996B2D9210956680027C196 /* DoubleSocketCollectionViewCell.xib in Resources */,
 				A97E74522106948E004D1953 /* SocketDetailViewController.xib in Resources */,
 				A9C0954020F5731E00929A72 /* SocketCollectionViewCell.xib in Resources */,
 				A9BA1BC620F42FC800F6E329 /* Main.storyboard in Resources */,
@@ -342,6 +349,7 @@
 				A9BA1BF320F4346D00F6E329 /* DashboardCollectionViewController.swift in Sources */,
 				A9BA1BFC20F443FA00F6E329 /* DashboardCollectionViewCell.swift in Sources */,
 				A9BA1BC120F42FC800F6E329 /* AppDelegate.swift in Sources */,
+				A996B2D8210956680027C196 /* DoubleSocketCollectionViewCell.swift in Sources */,
 				A9C0953F20F5731E00929A72 /* SocketCollectionViewCell.swift in Sources */,
 				A95F08972108FE12001CCE03 /* BLEConnectShared.swift in Sources */,
 				A9C0954720F574A400929A72 /* SocketCollectionViewController.swift in Sources */,
