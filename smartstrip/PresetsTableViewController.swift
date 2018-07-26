@@ -77,27 +77,19 @@ class PresetsTableViewController: UITableViewController {
 			preset.setValue(Date(), forKeyPath: "date_created")
 			
 			var idx = 0
-			for number in ["One","Two","Three","Four","Five","Six"] {
+			for number in ["One","Two","Three","Four"] {
 				let sockEntity = NSEntityDescription.entity(forEntityName: "Socket", in: managedContext)!
 				let tempSock = NSManagedObject(entity: sockEntity,  insertInto: managedContext) as! Socket
 				tempSock.setValue(number, forKeyPath: "name")
 				tempSock.setValue(true, forKey: "active")
 				tempSock.setValue(idx, forKey: "position")
-				
-				var idxPower = idx
-				if(idx==2 || idx == 3){
-					idxPower = 2
-				} else if (idx==4 || idx == 5){
-					idxPower = 3
-				}
-				tempSock.setValue(idxPower, forKey: "power_index")
-				
+				tempSock.setValue(idx, forKey: "power_index")
+				tempSock.setValue(2, forKey: "delay")
 				
 				preset.addToSockets(tempSock)
 				idx = idx + 1
 			}
 
-			
 			do {
 				try managedContext.save()
 				presets.append(preset)

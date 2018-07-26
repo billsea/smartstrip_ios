@@ -10,8 +10,9 @@ import UIKit
 import CoreData
 
 private let reuseIdentifier = "Cell"
+private let reuseIdentifier2 = "DoubleCell"
 
-class PresetViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource{
+class PresetViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
 	let bleShared = bleSharedInstance
 	var selectedPreset : Preset?
@@ -35,7 +36,8 @@ class PresetViewController: UIViewController, UICollectionViewDelegate, UICollec
 		
 			// Register cell classes
 			self.collectionView!.register(UINib(nibName: "SocketCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: reuseIdentifier)
-			
+			self.collectionView!.register(UINib(nibName: "DoubleSocketCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: reuseIdentifier2)
+		
 			let editButton = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(editTapped))
 			
 			navigationItem.rightBarButtonItems = [editButton]
@@ -83,22 +85,9 @@ class PresetViewController: UIViewController, UICollectionViewDelegate, UICollec
 	}
 	
 	func updateCollectionData(socket_index : Int, status: Int){
-		//Update UI - TODO
-		var socket_change = [NSInteger]()
-
-		if(socket_index == 2){
-			socket_change.append(2)
-			socket_change.append(3)
-		} else if (socket_index == 3){
-			socket_change.append(4)
-			socket_change.append(5)
-		} else {
-			socket_change.append(socket_index)
-		}
-
-		for socket_item in socketList {
-			socket_item.active = status == 0 ? false : true
-		}
+		//Update UI
+		let sel_socket = socketList[socket_index]
+		sel_socket.active = status == 0 ? false : true
 		
 		DispatchQueue.main.async() {
 			self.collectionView?.reloadData()
@@ -114,25 +103,44 @@ class PresetViewController: UIViewController, UICollectionViewDelegate, UICollec
 		func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 			return (selectedPreset?.sockets?.count)!
 		}
-
-		func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-			let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! SocketCollectionViewCell
-			
-			if((socketList.count) > 0){
-				cell.selSocket = socketList[indexPath.row]
-				cell.backgroundColor = socketList[indexPath.row].active ? UIColor.green : UIColor.red
-				cell.cellName.text =  socketList[indexPath.row].name! + ":" + String(socketList[indexPath.row].power_index + 1)
+	
+	
+		func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+			if(indexPath.row < 2){
+				return CGSize(width: 160, height: 160)
+			} else {
+				return CGSize(width: self.collectionView.frame.width - 20, height: 160)
 			}
-			
-			return cell
+		}
+		
+		func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+		
+				if(indexPath.row < 2){
+					let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! SocketCollectionViewCell
+					cell.selSocket = socketList[indexPath.row]
+					cell.backgroundColor = socketList[indexPath.row].active ? UIColor.green : UIColor.red
+					cell.cellName.text =  socketList[indexPath.row].name! + ":" + String(socketList[indexPath.row].power_index + 1)
+					return cell
+				} else {
+					let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier2, for: indexPath) as! DoubleSocketCollectionViewCell
+					cell.selSocket = socketList[indexPath.row]
+					cell.backgroundColor = socketList[indexPath.row].active ? UIColor.green : UIColor.red
+					cell.cellName.text =  socketList[indexPath.row].name! + ":" + String(socketList[indexPath.row].power_index + 1)
+					return cell
+				}
 		}
 	
-
 		func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
 			let vc = SocketDetailViewController(nibName: "SocketDetailViewController", bundle: nil)
 			vc.cellIndex = indexPath.row
-			let cell = self.collectionView.cellForItem(at: indexPath) as! SocketCollectionViewCell
-			vc.selSocket = cell.selSocket!
+			
+			if(indexPath.row < 2){
+				let cell = self.collectionView.cellForItem(at: indexPath) as! SocketCollectionViewCell
+				vc.selSocket = cell.selSocket!
+			} else {
+				let cell = self.collectionView.cellForItem(at: indexPath) as! DoubleSocketCollectionViewCell
+				vc.selSocket = cell.selSocket!
+			}
 			vc.socketList = socketList
 			self.navigationController?.pushViewController(vc, animated: false)
 			
@@ -145,20 +153,22 @@ class PresetViewController: UIViewController, UICollectionViewDelegate, UICollec
 		}
 	
 		func startPowerSequence(powerUp: Bool) {
-	
+			var socketListSort = socketList
+			
 			if(powerUp){
 				//power up
-				socketList.sort(by: { $0.power_index < $1.power_index })
+				socketListSort.sort(by: { $0.power_index < $1.power_index })
 			} else {
 				//power down
-				socketList.sort(by: { $0.power_index > $1.power_index })
+				socketListSort.sort(by: { $0.power_index > $1.power_index })
 			}
 			
 			//Start power up/down sequence
 			DispatchQueue.global(qos: .default).async {
-				for socketIndex in self.socketList {
-					sleep(2)
+				for socketIndex in socketListSort {
+					sleep(UInt32(socketIndex.delay))
 					DispatchQueue.main.async {
+						print(socketIndex.position)
 						self.bleShared.writeToBLE(value: UInt8(socketIndex.position))
 					}
 				}
