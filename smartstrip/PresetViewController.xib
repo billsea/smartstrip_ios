@@ -43,6 +43,9 @@
                         <segment title="Power Up"/>
                         <segment title="Power Down"/>
                     </segments>
+                    <connections>
+                        <action selector="powerButtonHit:" destination="-1" eventType="valueChanged" id="Dw4-Cp-8Nv"/>
+                    </connections>
                 </segmentedControl>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

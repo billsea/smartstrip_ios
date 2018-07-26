@@ -96,9 +96,8 @@ class PresetViewController: UIViewController, UICollectionViewDelegate, UICollec
 			socket_change.append(socket_index)
 		}
 
-		for item in socket_change {
-			let sel_socket = cv_items[item] as ViewSocket
-			sel_socket.active = status == 0 ? false : true
+		for socket_item in socketList {
+			socket_item.active = status == 0 ? false : true
 		}
 		
 		DispatchQueue.main.async() {
@@ -140,7 +139,34 @@ class PresetViewController: UIViewController, UICollectionViewDelegate, UICollec
 			return true
 		}
 	
-    override func didReceiveMemoryWarning() {
+		@IBAction func powerButtonHit(_ sender: Any) {
+			let powerButton = sender as! UISegmentedControl
+			self.startPowerSequence(powerUp: (powerButton.selectedSegmentIndex == 0) ? true : false)
+		}
+	
+		func startPowerSequence(powerUp: Bool) {
+	
+			if(powerUp){
+				//power up
+				socketList.sort(by: { $0.power_index < $1.power_index })
+			} else {
+				//power down
+				socketList.sort(by: { $0.power_index > $1.power_index })
+			}
+			
+			//Start power up/down sequence
+			DispatchQueue.global(qos: .default).async {
+				for socketIndex in self.socketList {
+					sleep(2)
+					DispatchQueue.main.async {
+						self.bleShared.writeToBLE(value: UInt8(socketIndex.position))
+					}
+				}
+			}
+		}
+		
+	
+		override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
