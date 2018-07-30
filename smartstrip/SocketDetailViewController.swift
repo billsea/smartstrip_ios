@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SocketDetailViewController: UIViewController {
+class SocketDetailViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
 	var cellIndex : NSInteger = 0
 	var selSocket : Socket!
@@ -17,11 +17,16 @@ class SocketDetailViewController: UIViewController {
 	@IBOutlet weak var socketName: UITextField!
 	@IBOutlet weak var socketPowerIndex: UISegmentedControl!
 
+	@IBOutlet weak var delayPicker: UIPickerView!
 	
 	override func viewDidLoad() {
         super.viewDidLoad()
+		self.delayPicker.delegate = self
 		self.socketName.text = selSocket.name
 		self.socketPowerIndex.selectedSegmentIndex = Int(selSocket.power_index)
+		
+		self.delayPicker.selectRow(Int(selSocket.delay-1), inComponent: 0, animated: true)
+		
     }
 
 	override func viewWillDisappear(_ animated: Bool) {
@@ -29,6 +34,23 @@ class SocketDetailViewController: UIViewController {
 		selSocket.name = self.socketName.text
 		selSocket.power_index = Int32(self.socketPowerIndex.selectedSegmentIndex)
 	}
+	
+	func numberOfComponents(in pickerView: UIPickerView) -> Int {
+		return 1
+	}
+	
+	func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+		return 10
+	}
+	
+	func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+		return String(row+1)
+	}
+	
+	func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+		selSocket.delay = Int32(row+1)
+	}
+	
 	
 	@IBAction func powerIndexHit(_ sender: Any) {
 		
