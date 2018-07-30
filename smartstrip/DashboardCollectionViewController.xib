@@ -19,12 +19,13 @@
         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <color key="backgroundColor" red="1" green="0.39781564780000001" blue="0.18195082830000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <viewLayoutGuide key="safeArea" id="oBF-5E-Iza"/>
             <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="c7k-ch-oGk">
                 <size key="itemSize" width="160" height="160"/>
                 <size key="headerReferenceSize" width="0.0" height="10"/>
                 <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                <inset key="sectionInset" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
+                <inset key="sectionInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
             </collectionViewFlowLayout>
             <connections>
                 <outlet property="dataSource" destination="-1" id="Tng-2m-Rnh"/>

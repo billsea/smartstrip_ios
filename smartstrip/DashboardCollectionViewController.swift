@@ -56,7 +56,7 @@ class DashboardCollectionViewController: UICollectionViewController {
 			
 			
         // Configure the cell
-			cell.backgroundColor = UIColor.white;
+			//cell.backgroundColor = UIColor.white;
 			cell.cellNameLabel.text =  cv_items[indexPath.row].name
 			cell.cellImage.image = cv_items[indexPath.row].image
 			return cell
