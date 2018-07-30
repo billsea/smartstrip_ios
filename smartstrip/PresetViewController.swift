@@ -176,10 +176,13 @@ class PresetViewController: UIViewController, UICollectionViewDelegate, UICollec
 			//Start power up/down sequence
 			DispatchQueue.global(qos: .default).async {
 				for socketIndex in socketListSort {
+					//Toggle socket only if needed
+					if((socketIndex.active && !powerUp) || (!socketIndex.active && powerUp)){
 					sleep(UInt32(socketIndex.delay))
 					DispatchQueue.main.async {
 						print(socketIndex.position)
-						self.bleShared.writeToBLE(value: UInt8(socketIndex.position))
+							self.bleShared.writeToBLE(value: UInt8(socketIndex.position))
+						}
 					}
 				}
 			}
