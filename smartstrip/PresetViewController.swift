@@ -12,7 +12,7 @@ import CoreData
 private let reuseIdentifier = "Cell"
 private let reuseIdentifier2 = "DoubleCell"
 
-class PresetViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class PresetViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, bleConnectDelegate {
 
 	let bleShared = bleSharedInstance
 	var selectedPreset : Preset?
@@ -32,6 +32,11 @@ class PresetViewController: UIViewController, UICollectionViewDelegate, UICollec
 					return
 			}
 		
+		  self.bleShared.bleDelegate = self
+		
+			//hide cv until connection is made
+			self.collectionView?.isHidden = true
+		
 			managedContext = appDelegate.persistentContainer.viewContext
 		
 			// Register cell classes
@@ -42,17 +47,12 @@ class PresetViewController: UIViewController, UICollectionViewDelegate, UICollec
 			
 			navigationItem.rightBarButtonItems = [editButton]
 		
-			// Discover bluetooth devices
-			bleShared.updateCollectionCallback = {(_ socket_index: Int, _ status: Int) -> Void in
-				self.updateCollectionData(socket_index: socket_index, status: status)
+		  //Check if we have a ble peripheral established
+			if(self.bleShared.HmSoftPeripheral != nil){
+				//peripheral is initialized
+				self.connect(connected: true)
+				self.bleShared.HmSoftPeripheral?.discoverCharacteristics(nil, for: self.bleShared.HmSoftService!)
 			}
-		
-			bleShared.connectCallback = {(_ status: Bool) -> Void in
-				//TODO: Add spinner or status update
-				self.collectionView?.isHidden = false
-				print("connected!")
-			}
-		
     }
 	
 	override func viewWillAppear(_ animated: Bool) {
@@ -66,7 +66,7 @@ class PresetViewController: UIViewController, UICollectionViewDelegate, UICollec
 		self.collectionView.reloadData()
 	}
 	
-		func save(name: String) {
+	func save(name: String) {
 			
 			let entity = NSEntityDescription.entity(forEntityName: "Preset", in: managedContext!)!
 			let preset = NSManagedObject(entity: entity,  insertInto: managedContext)
@@ -94,6 +94,16 @@ class PresetViewController: UIViewController, UICollectionViewDelegate, UICollec
 		}
 		
 	}
+	
+		//MARK: BleConnectDelegates
+		func connect(connected: Bool) {
+			self.collectionView?.isHidden = false
+			print("connected!")
+		}
+	
+		func updateCollection(_ socket_index: Int, _ status: Int) {
+			self.updateCollectionData(socket_index: socket_index, status: status)
+		}
 	
 		// MARK: UICollectionViewDataSource
 		func numberOfSections(in collectionView: UICollectionView) -> Int {

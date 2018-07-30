@@ -12,7 +12,8 @@ import CoreData
 private let reuseIdentifier = "Cell"
 private let reuseIdentifier2 = "DoubleCell"
 
-class SocketCollectionViewController: UICollectionViewController, UIAlertViewDelegate, UICollectionViewDelegateFlowLayout {
+class SocketCollectionViewController: UICollectionViewController, UIAlertViewDelegate, UICollectionViewDelegateFlowLayout, bleConnectDelegate {
+	
 	var alertController : UIAlertController!
 	let bleShared = bleSharedInstance
 
@@ -26,6 +27,8 @@ class SocketCollectionViewController: UICollectionViewController, UIAlertViewDel
 			//hide cv until connection is made
 			self.collectionView?.isHidden = true
 			
+			self.bleShared.bleDelegate = self
+			
 			//set data source
 			self.loadManual()
 
@@ -33,17 +36,12 @@ class SocketCollectionViewController: UICollectionViewController, UIAlertViewDel
 			self.collectionView!.register(UINib(nibName: "SocketCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: reuseIdentifier)
 			self.collectionView!.register(UINib(nibName: "DoubleSocketCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: reuseIdentifier2)
 			
-			// Discover bluetooth devices
-			bleShared.updateCollectionCallback = {(_ socket_index: Int, _ status: Int) -> Void in
-				self.updateCollectionData(socket_index: socket_index, status: status)
+			//Check if we have a ble peripheral established
+			if(self.bleShared.HmSoftPeripheral != nil){
+				//peripheral is initialized
+				self.connect(connected: true)
+				self.bleShared.HmSoftPeripheral?.discoverCharacteristics(nil, for: self.bleShared.HmSoftService!)
 			}
-			
-			bleShared.connectCallback = {(_ status: Bool) -> Void in
-				//TODO: Add spinner or status update
-				self.collectionView?.isHidden = false
-				print("connected!")
-			}
-
     }
 			
 		func loadManual(){
@@ -66,6 +64,16 @@ class SocketCollectionViewController: UICollectionViewController, UIAlertViewDel
 			alertController.view.addSubview(spinnerIndicator)
 			self.present(alertController, animated: false, completion: nil)
 		}
+	
+	//MARK: Ble Connect Delegate
+	func connect(connected: Bool) {
+			self.collectionView?.isHidden = false
+			print("connected!")
+	}
+	
+	func updateCollection(_ socket_index: Int, _ status: Int) {
+		self.updateCollectionData(socket_index: socket_index, status: status)
+	}
 	
 
 		// MARK: UICollectionViewDataSource

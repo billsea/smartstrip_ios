@@ -15,6 +15,10 @@
 import Foundation
 import CoreBluetooth
 
+protocol bleConnectDelegate {
+	func connect(connected:Bool)
+	func updateCollection(_ socket_index: Int, _ status: Int)
+}
 
 enum HW_SOCKET : UInt8 {
 	case ONE
@@ -24,23 +28,22 @@ enum HW_SOCKET : UInt8 {
 	case ALL
 }
 
-
 private let bleShieldName = "HMSoft"
 
 let bleSharedInstance = BLEConnectShared();
 
 class BLEConnectShared: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
 	
-	fileprivate var HmSoftPeripheral: CBPeripheral? //HmSoft BLE Shield
+	var HmSoftPeripheral: CBPeripheral? //HmSoft BLE Shield
 	fileprivate var centralManager: CBCentralManager!
 	fileprivate var positionCharacteristic: CBCharacteristic?
+	var HmSoftService : CBService?
 	
 	//TEMP TODO: Un-hardcode these values
 	let BLEService = "FFE0"
 	let BLECharacteristic = "FFE1"
 	
-	var updateCollectionCallback: ((_ socket_index: Int, _ status: Int) -> Void)?
-	var connectCallback: ((_ connected: Bool) -> Void)?
+	var bleDelegate: bleConnectDelegate!
 	
 	override init() {
 		super.init()
@@ -65,7 +68,7 @@ class BLEConnectShared: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate
 		if((HmSoftPeripheral) != nil){
 			centralManager?.connect(HmSoftPeripheral!, options: nil)
 			//notify caller
-			self.connectCallback!(true)
+			bleDelegate.connect(connected: true)
 			//alertController.dismiss(animated: true, completion: nil);
 		}
 	}
@@ -78,6 +81,9 @@ class BLEConnectShared: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate
 		HmSoftPeripheral?.writeValue(socket_index, for: self.positionCharacteristic!, type: CBCharacteristicWriteType.withoutResponse)
 	}
 	
+	func reset(){
+		HmSoftPeripheral = nil
+	}
 	
 	//MARK: Central manager delegates
 	
@@ -114,7 +120,7 @@ class BLEConnectShared: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate
 	func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
 		guard let services = peripheral.services else { return }
 		for service in services {
-			print(service)
+			HmSoftService = service
 			peripheral.discoverCharacteristics(nil, for: service)
 		}
 	}
@@ -156,11 +162,11 @@ class BLEConnectShared: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate
 					//arduino pin status
 					var soc_index = 1 //pin status starts at index one
 					while soc_index < (characteristic.value?.count)! {
-						self.updateCollectionCallback!(soc_index - 1,Int(characteristic.value![soc_index]))
+						self.bleDelegate.updateCollection(soc_index - 1,Int(characteristic.value![soc_index]))
 						soc_index = soc_index + 1
 					}
 				} else {
-					self.updateCollectionCallback!(Int(characteristic.value![0]),Int(characteristic.value![1]))
+					self.bleDelegate.updateCollection(Int(characteristic.value![0]),Int(characteristic.value![1]))
 				}
 			}
 		}
@@ -173,7 +179,5 @@ class BLEConnectShared: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate
 	func peripheral(_ peripheral: CBPeripheral, didDiscoverDescriptorsFor characteristic: CBCharacteristic, error: Error?) {
 		print(characteristic.descriptors!)
 	}
-	
-	
 
 }
