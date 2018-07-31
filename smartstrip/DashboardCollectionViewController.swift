@@ -25,9 +25,9 @@ class DashboardCollectionViewController: UICollectionViewController {
 			self.title = "Dashboard";
 
 			//data source
-			cv_items.append(view_data(name: "Manual", image: UIImage(named: "help")))
-			cv_items.append(view_data(name: "Presets", image: UIImage(named: "help")))
-			cv_items.append(view_data(name: "Settings", image: UIImage(named: "help")))
+			cv_items.append(view_data(name: "Manual", image: UIImage(named: "whole_hand-50")))
+			cv_items.append(view_data(name: "Presets", image: UIImage(named: "play-50")))
+			cv_items.append(view_data(name: "Settings", image: UIImage(named: "settings-50")))
 
         // Register cell classes
 			self.collectionView!.register(UINib(nibName: "DashboardCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: reuseIdentifier)

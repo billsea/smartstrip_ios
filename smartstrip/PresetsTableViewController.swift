@@ -18,6 +18,8 @@ class PresetsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 			
+			self.title = NSLocalizedString("Presets", comment:"")
+			
 			let addButton = UIBarButtonItem(
 				title: "Add",
 				style: .plain,

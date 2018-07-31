@@ -23,7 +23,7 @@ class SocketCollectionViewController: UICollectionViewController, UIAlertViewDel
     override func viewDidLoad() {
         super.viewDidLoad()
 
-			self.title = "Socket Status"
+			self.title = NSLocalizedString("Manual", comment:"")
 			
 			//hide cv until connection is made
 			self.collectionView?.isHidden = true
