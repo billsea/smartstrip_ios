@@ -11,6 +11,7 @@ import CoreData
 
 private let reuseIdentifier = "Cell"
 private let reuseIdentifier2 = "DoubleCell"
+private let reuseIdentifier3 = "RightCell"
 
 class PresetViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, bleConnectDelegate {
 
@@ -42,6 +43,7 @@ class PresetViewController: UIViewController, UICollectionViewDelegate, UICollec
 			// Register cell classes
 			self.collectionView!.register(UINib(nibName: "SocketCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: reuseIdentifier)
 			self.collectionView!.register(UINib(nibName: "DoubleSocketCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: reuseIdentifier2)
+			self.collectionView!.register(UINib(nibName: "RightSocketCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: reuseIdentifier3)
 		
 			let editButton = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(editTapped))
 			
@@ -117,24 +119,30 @@ class PresetViewController: UIViewController, UICollectionViewDelegate, UICollec
 	
 		func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 			if(indexPath.row < 2){
-				return CGSize(width: 160, height: 160)
+				return CGSize(width: 180, height: 160)
 			} else {
 				return CGSize(width: self.collectionView.frame.width - 20, height: 160)
 			}
 		}
 		
 		func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-		
-				if(indexPath.row < 2){
+			
+				if(indexPath.row == 0){
 					let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! SocketCollectionViewCell
 					cell.selSocket = socketList[indexPath.row]
-					cell.backgroundColor = socketList[indexPath.row].active ? UIColor.green : UIColor.red
+					cell.statusImage.backgroundColor = socketList[indexPath.row].active ? UIColor.green : UIColor.darkGray
+					cell.cellName.text =  socketList[indexPath.row].name! + ":" + String(socketList[indexPath.row].power_index + 1)
+					return cell
+				}	else if(indexPath.row == 1){
+					let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier3, for: indexPath) as! RightSocketCollectionViewCell
+					cell.selSocket = socketList[indexPath.row]
+					cell.statusImage.backgroundColor = socketList[indexPath.row].active ? UIColor.green : UIColor.darkGray
 					cell.cellName.text =  socketList[indexPath.row].name! + ":" + String(socketList[indexPath.row].power_index + 1)
 					return cell
 				} else {
 					let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier2, for: indexPath) as! DoubleSocketCollectionViewCell
 					cell.selSocket = socketList[indexPath.row]
-					cell.backgroundColor = socketList[indexPath.row].active ? UIColor.green : UIColor.red
+					cell.statusImage.backgroundColor = socketList[indexPath.row].active ? UIColor.green : UIColor.darkGray
 					cell.cellName.text =  socketList[indexPath.row].name! + ":" + String(socketList[indexPath.row].power_index + 1)
 					return cell
 				}
@@ -144,9 +152,12 @@ class PresetViewController: UIViewController, UICollectionViewDelegate, UICollec
 			let vc = SocketDetailViewController(nibName: "SocketDetailViewController", bundle: nil)
 			vc.cellIndex = indexPath.row
 			
-			if(indexPath.row < 2){
+			if(indexPath.row == 0){
 				let cell = self.collectionView.cellForItem(at: indexPath) as! SocketCollectionViewCell
 				vc.selSocket = cell.selSocket!
+			} else if(indexPath.row == 1){
+					let cell = self.collectionView.cellForItem(at: indexPath) as! RightSocketCollectionViewCell
+					vc.selSocket = cell.selSocket!
 			} else {
 				let cell = self.collectionView.cellForItem(at: indexPath) as! DoubleSocketCollectionViewCell
 				vc.selSocket = cell.selSocket!

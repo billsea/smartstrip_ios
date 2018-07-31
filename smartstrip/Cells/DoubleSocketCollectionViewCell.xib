@@ -34,6 +34,11 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HNB-vn-8SM">
+                        <rect key="frame" x="158" y="51" width="35" height="35"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
+                    </imageView>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
@@ -41,6 +46,7 @@
                 <outlet property="cellImage" destination="LYZ-Hr-jsl" id="WPn-bn-sdi"/>
                 <outlet property="cellImage2" destination="4CK-Qr-xgE" id="Xnr-Bu-IvV"/>
                 <outlet property="cellName" destination="33S-0o-WgN" id="zq8-o1-zfy"/>
+                <outlet property="statusImage" destination="HNB-vn-8SM" id="CHL-7w-X2z"/>
             </connections>
         </collectionViewCell>
     </objects>

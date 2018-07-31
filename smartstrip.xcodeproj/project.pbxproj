@@ -34,6 +34,8 @@
 		A9E098882106583600F2E348 /* PresetsTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9E098862106583600F2E348 /* PresetsTableViewController.xib */; };
 		A9E0988B21065A6B00F2E348 /* PresetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9E0988921065A6B00F2E348 /* PresetTableViewCell.swift */; };
 		A9E0988C21065A6B00F2E348 /* PresetTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9E0988A21065A6B00F2E348 /* PresetTableViewCell.xib */; };
+		A9ED63052111229900AD2394 /* RightSocketCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9ED63032111229900AD2394 /* RightSocketCollectionViewCell.swift */; };
+		A9ED63062111229900AD2394 /* RightSocketCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9ED63042111229900AD2394 /* RightSocketCollectionViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +89,8 @@
 		A9E098862106583600F2E348 /* PresetsTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PresetsTableViewController.xib; sourceTree = "<group>"; };
 		A9E0988921065A6B00F2E348 /* PresetTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetTableViewCell.swift; sourceTree = "<group>"; };
 		A9E0988A21065A6B00F2E348 /* PresetTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PresetTableViewCell.xib; sourceTree = "<group>"; };
+		A9ED63032111229900AD2394 /* RightSocketCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightSocketCollectionViewCell.swift; sourceTree = "<group>"; };
+		A9ED63042111229900AD2394 /* RightSocketCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RightSocketCollectionViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -197,6 +201,8 @@
 				A9E0988A21065A6B00F2E348 /* PresetTableViewCell.xib */,
 				A996B2D6210956680027C196 /* DoubleSocketCollectionViewCell.swift */,
 				A996B2D7210956680027C196 /* DoubleSocketCollectionViewCell.xib */,
+				A9ED63032111229900AD2394 /* RightSocketCollectionViewCell.swift */,
+				A9ED63042111229900AD2394 /* RightSocketCollectionViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -311,6 +317,7 @@
 				A9BA1BCB20F42FC900F6E329 /* Assets.xcassets in Resources */,
 				A9E0988C21065A6B00F2E348 /* PresetTableViewCell.xib in Resources */,
 				A9C0954820F574A400929A72 /* SocketCollectionViewController.xib in Resources */,
+				A9ED63062111229900AD2394 /* RightSocketCollectionViewCell.xib in Resources */,
 				A996B2D9210956680027C196 /* DoubleSocketCollectionViewCell.xib in Resources */,
 				A97E74522106948E004D1953 /* SocketDetailViewController.xib in Resources */,
 				A9C0954020F5731E00929A72 /* SocketCollectionViewCell.xib in Resources */,
@@ -353,6 +360,7 @@
 				A9C0953F20F5731E00929A72 /* SocketCollectionViewCell.swift in Sources */,
 				A95F08972108FE12001CCE03 /* BLEConnectShared.swift in Sources */,
 				A9C0954720F574A400929A72 /* SocketCollectionViewController.swift in Sources */,
+				A9ED63052111229900AD2394 /* RightSocketCollectionViewCell.swift in Sources */,
 				A95F089A2109102A001CCE03 /* ViewSocket.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -536,7 +544,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.loudsoftware.smartstrip;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -554,7 +562,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.loudsoftware.smartstrip;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

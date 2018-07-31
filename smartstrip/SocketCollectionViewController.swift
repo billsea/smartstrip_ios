@@ -11,6 +11,7 @@ import CoreData
 
 private let reuseIdentifier = "Cell"
 private let reuseIdentifier2 = "DoubleCell"
+private let reuseIdentifier3 = "RightCell"
 
 class SocketCollectionViewController: UICollectionViewController, UIAlertViewDelegate, UICollectionViewDelegateFlowLayout, bleConnectDelegate {
 	
@@ -35,6 +36,7 @@ class SocketCollectionViewController: UICollectionViewController, UIAlertViewDel
 			// Register cell classes
 			self.collectionView!.register(UINib(nibName: "SocketCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: reuseIdentifier)
 			self.collectionView!.register(UINib(nibName: "DoubleSocketCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: reuseIdentifier2)
+			self.collectionView!.register(UINib(nibName: "RightSocketCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: reuseIdentifier3)
 			
 			//Check if we have a ble peripheral established
 			if(self.bleShared.HmSoftPeripheral != nil){
@@ -88,7 +90,7 @@ class SocketCollectionViewController: UICollectionViewController, UIAlertViewDel
 	
 		func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 			if(indexPath.row < 2){
-				return CGSize(width: 160, height: 160)
+				return CGSize(width: 180, height: 160)
 			} else {
 				return CGSize(width: collectionView.frame.width - 20, height: 160)
 			}
@@ -96,16 +98,22 @@ class SocketCollectionViewController: UICollectionViewController, UIAlertViewDel
 
 		override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 			
-			if(indexPath.row < 2){
+			if(indexPath.row == 0){
 				let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! SocketCollectionViewCell
 				let current_socket = cv_items[indexPath.row] as ViewSocket
-				cell.backgroundColor = current_socket.active! ? UIColor.green : UIColor.red
+				cell.statusImage.backgroundColor = current_socket.active! ? UIColor.green : UIColor.darkGray
+				cell.cellName.text =  current_socket.name
+				return cell
+			} else if(indexPath.row == 1){
+				let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier3, for: indexPath) as! RightSocketCollectionViewCell
+				let current_socket = cv_items[indexPath.row] as ViewSocket
+				cell.statusImage.backgroundColor = current_socket.active! ? UIColor.green : UIColor.darkGray
 				cell.cellName.text =  current_socket.name
 				return cell
 			} else {
 				let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier2, for: indexPath) as! DoubleSocketCollectionViewCell
 				let current_socket = cv_items[indexPath.row] as ViewSocket
-				cell.backgroundColor = current_socket.active! ? UIColor.green : UIColor.red
+				cell.statusImage.backgroundColor = current_socket.active! ? UIColor.green : UIColor.darkGray
 				cell.cellName.text =  current_socket.name
 				return cell
 			}
