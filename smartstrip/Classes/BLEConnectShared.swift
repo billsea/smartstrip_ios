@@ -78,6 +78,11 @@ class BLEConnectShared: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate
 		var socket_index = Data(count: 1)
 		socket_index[0] = value
 		
+		guard (HmSoftPeripheral?.state)!.rawValue == 2 else {
+			//TODO: try to reconnect?
+			print("not connected")
+			return
+		}
 		HmSoftPeripheral?.writeValue(socket_index, for: self.positionCharacteristic!, type: CBCharacteristicWriteType.withoutResponse)
 	}
 	

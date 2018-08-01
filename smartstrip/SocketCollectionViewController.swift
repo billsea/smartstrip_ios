@@ -39,7 +39,7 @@ class SocketCollectionViewController: UICollectionViewController, UIAlertViewDel
 			self.collectionView!.register(UINib(nibName: "RightSocketCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: reuseIdentifier3)
 			
 			//Check if we have a ble peripheral established
-			if(self.bleShared.HmSoftPeripheral != nil){
+			if(self.bleShared.HmSoftPeripheral != nil && (self.bleShared.HmSoftPeripheral?.state)!.rawValue == 2){
 				//peripheral is initialized
 				self.connect(connected: true)
 				self.bleShared.HmSoftPeripheral?.discoverCharacteristics(nil, for: self.bleShared.HmSoftService!)
