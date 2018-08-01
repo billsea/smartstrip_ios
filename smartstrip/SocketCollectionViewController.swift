@@ -92,7 +92,7 @@ class SocketCollectionViewController: UICollectionViewController, UIAlertViewDel
 			if(indexPath.row < 2){
 				return CGSize(width: 180, height: 160)
 			} else {
-				return CGSize(width: collectionView.frame.width - 20, height: 160)
+				return CGSize(width: collectionView.frame.width - 10, height: 160)
 			}
 		}
 
