@@ -15,7 +15,11 @@ class DashboardCollectionViewCell: UICollectionViewCell {
 	
 	override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+		
+			UIView.animate(withDuration: 1.5, animations: {
+				self.cellImage.alpha = 1.0
+			})
+		
     }
 
 }
