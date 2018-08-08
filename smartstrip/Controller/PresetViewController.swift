@@ -155,13 +155,19 @@ class PresetViewController: UIViewController, UICollectionViewDelegate, UICollec
 			
 			if(indexPath.row == 0){
 				let cell = self.collectionView.cellForItem(at: indexPath) as! SocketCollectionViewCell
-				vc.selSocket = cell.selSocket!
+				if let selSocket = cell.selSocket {
+					vc.selSocket = selSocket
+				}
 			} else if(indexPath.row == 1){
-					let cell = self.collectionView.cellForItem(at: indexPath) as! RightSocketCollectionViewCell
-					vc.selSocket = cell.selSocket!
+				let cell = self.collectionView.cellForItem(at: indexPath) as! RightSocketCollectionViewCell
+				if let selSocket = cell.selSocket {
+					vc.selSocket = selSocket
+				}
 			} else {
 				let cell = self.collectionView.cellForItem(at: indexPath) as! DoubleSocketCollectionViewCell
-				vc.selSocket = cell.selSocket!
+				if let selSocket = cell.selSocket {
+					vc.selSocket = selSocket
+				}
 			}
 			vc.socketList = socketList
 			self.navigationController?.pushViewController(vc, animated: false)

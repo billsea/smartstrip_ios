@@ -118,6 +118,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A91D6124211A6A0F00761424 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A91D6125211A6A1700761424 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A9BA1BF220F4346D00F6E329 /* DashboardCollectionViewController.xib */,
+				A9C0954620F574A400929A72 /* SocketCollectionViewController.xib */,
+				A95D8A4821016FE900B01B65 /* PresetViewController.xib */,
+				A9E098862106583600F2E348 /* PresetsTableViewController.xib */,
+				A97E74502106948E004D1953 /* SocketDetailViewController.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A91D6126211A6A1B00761424 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				A9BA1BF120F4346D00F6E329 /* DashboardCollectionViewController.swift */,
+				A9C0954520F574A400929A72 /* SocketCollectionViewController.swift */,
+				A95D8A4721016FE900B01B65 /* PresetViewController.swift */,
+				A9E098852106583600F2E348 /* PresetsTableViewController.swift */,
+				A97E744F2106948E004D1953 /* SocketDetailViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		A95F08982108FE23001CCE03 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -151,22 +182,15 @@
 			isa = PBXGroup;
 			children = (
 				A9BA1BF920F443CB00F6E329 /* Cells */,
+				A91D6126211A6A1B00761424 /* Controller */,
+				A91D6125211A6A1700761424 /* View */,
+				A91D6124211A6A0F00761424 /* Model */,
 				A9BA1BC020F42FC800F6E329 /* AppDelegate.swift */,
 				A9BA1BC420F42FC800F6E329 /* Main.storyboard */,
 				A9BA1BCA20F42FC900F6E329 /* Assets.xcassets */,
 				A9BA1BCC20F42FC900F6E329 /* LaunchScreen.storyboard */,
 				A9BA1BCF20F42FC900F6E329 /* Info.plist */,
 				A9BA1BC720F42FC800F6E329 /* smartstrip.xcdatamodeld */,
-				A9BA1BF120F4346D00F6E329 /* DashboardCollectionViewController.swift */,
-				A9BA1BF220F4346D00F6E329 /* DashboardCollectionViewController.xib */,
-				A9C0954520F574A400929A72 /* SocketCollectionViewController.swift */,
-				A9C0954620F574A400929A72 /* SocketCollectionViewController.xib */,
-				A95D8A4721016FE900B01B65 /* PresetViewController.swift */,
-				A95D8A4821016FE900B01B65 /* PresetViewController.xib */,
-				A9E098852106583600F2E348 /* PresetsTableViewController.swift */,
-				A9E098862106583600F2E348 /* PresetsTableViewController.xib */,
-				A97E744F2106948E004D1953 /* SocketDetailViewController.swift */,
-				A97E74502106948E004D1953 /* SocketDetailViewController.xib */,
 				A95F08982108FE23001CCE03 /* Classes */,
 			);
 			path = smartstrip;

@@ -101,27 +101,26 @@ class SocketCollectionViewController: UICollectionViewController, UIAlertViewDel
 			if(indexPath.row == 0){
 				let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! SocketCollectionViewCell
 				let current_socket = cv_items[indexPath.row] as ViewSocket
-				if let socketActive = current_socket.active {
+				if let socketActive = current_socket.active, let socketName = current_socket.name {
 					cell.statusImage.backgroundColor = socketActive ? UIColor.green : UIColor.darkGray
-					cell.cellName.text =  current_socket.name
+					cell.cellName.text =  socketName
 				}
-				
 				return cell
 			} else if(indexPath.row == 1){
 				let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier3, for: indexPath) as! RightSocketCollectionViewCell
 				let current_socket = cv_items[indexPath.row] as ViewSocket
-				if let socketActive = current_socket.active {
+				if let socketActive = current_socket.active, let socketName = current_socket.name {
 					cell.statusImage.backgroundColor = socketActive ? UIColor.green : UIColor.darkGray
-					cell.cellName.text =  current_socket.name
+					cell.cellName.text =  socketName
 				}
 				
 				return cell
 			} else {
 				let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier2, for: indexPath) as! DoubleSocketCollectionViewCell
 				let current_socket = cv_items[indexPath.row] as ViewSocket
-				if let socketActive = current_socket.active {
+				if let socketActive = current_socket.active, let socketName = current_socket.name {
 					cell.statusImage.backgroundColor = socketActive ? UIColor.green : UIColor.darkGray
-					cell.cellName.text =  current_socket.name
+					cell.cellName.text =  socketName
 				}
 				return cell
 			}
