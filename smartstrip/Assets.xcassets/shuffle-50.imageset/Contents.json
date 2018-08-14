@@ -2,12 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "socket_smartstrip_60.png",
+      "filename" : "shuffle-50.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "socket_smartstrip_norm_nocolor.png",
       "scale" : "2x"
     },
     {
