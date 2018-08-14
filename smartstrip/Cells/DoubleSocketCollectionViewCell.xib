@@ -19,12 +19,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="350" height="160"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="socket" translatesAutoresizingMaskIntoConstraints="NO" id="LYZ-Hr-jsl">
-                        <rect key="frame" x="20" y="7" width="120" height="120"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="socket" translatesAutoresizingMaskIntoConstraints="NO" id="4CK-Qr-xgE">
-                        <rect key="frame" x="210" y="7" width="120" height="120"/>
+                        <rect key="frame" x="230" y="20" width="100" height="100"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="33S-0o-WgN">
@@ -39,6 +35,10 @@
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
                     </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="socket" translatesAutoresizingMaskIntoConstraints="NO" id="LYZ-Hr-jsl">
+                        <rect key="frame" x="20" y="20" width="100" height="100"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    </imageView>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
@@ -51,6 +51,6 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="socket" width="50" height="50"/>
+        <image name="socket" width="60" height="60"/>
     </resources>
 </document>

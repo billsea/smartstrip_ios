@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SocketDetailViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class SocketDetailViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
 
 	var cellIndex : NSInteger = 0
 	var selSocket : Socket!
@@ -26,6 +26,8 @@ class SocketDetailViewController: UIViewController, UIPickerViewDelegate, UIPick
 		self.socketPowerIndex.selectedSegmentIndex = Int(selSocket.power_index)
 		
 		self.delayPicker.selectRow(Int(selSocket.delay-1), inComponent: 0, animated: true)
+		
+		self.socketName.delegate = self
 		
     }
 
@@ -49,6 +51,11 @@ class SocketDetailViewController: UIViewController, UIPickerViewDelegate, UIPick
 	
 	func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
 		selSocket.delay = Int32(row+1)
+	}
+	
+	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+		self.view.endEditing(true)
+		return false
 	}
 	
 	
