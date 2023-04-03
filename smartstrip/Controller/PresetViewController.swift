@@ -15,7 +15,7 @@ private let reuseIdentifier3 = "RightCell"
 
 class PresetViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, bleConnectDelegate {
 
-	let bleShared = bleSharedInstance
+  let bleShared = BLEConnect.shared
 	var selectedPreset : Preset?
 	var managedContext : NSManagedObjectContext?
 	var socketList : [Socket] = []

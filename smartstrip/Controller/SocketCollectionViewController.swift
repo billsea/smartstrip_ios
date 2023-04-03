@@ -16,7 +16,7 @@ private let reuseIdentifier3 = "RightCell"
 class SocketCollectionViewController: UICollectionViewController, UIAlertViewDelegate, UICollectionViewDelegateFlowLayout, bleConnectDelegate {
 	
 	var alertController : UIAlertController!
-	let bleShared = bleSharedInstance
+  let bleShared = BLEConnect.shared
 
 	var cv_items = [ViewSocket]()
 	
